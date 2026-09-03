@@ -1,0 +1,44 @@
+.what-we-do__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.what-we-do__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.what-we-do__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-bright);
+}
+
+.what-we-do__title {
+  font-size: 17px;
+  color: var(--color-text-primary);
+  line-height: 1.35;
+}
+
+.what-we-do__body {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 640px) {
+  .what-we-do__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .what-we-do__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,21 @@
+.not-found {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding-block: var(--space-8);
+}
+
+.not-found__title {
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--color-text-primary);
+}
+
+.not-found__body {
+  color: var(--color-text-secondary);
+  max-width: 44ch;
+  margin-bottom: var(--space-3);
+}

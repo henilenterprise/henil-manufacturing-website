@@ -1,0 +1,38 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  line-height: 1.4;
+}
+
+/* --- outline --- */
+.badge--outline.badge--neutral { color: var(--color-text-secondary); border: 1px solid rgba(255,255,255,0.14); }
+.badge--outline.badge--accent  { color: var(--color-accent-bright); border: 1px solid var(--color-glass-border-strong); }
+.badge--outline.badge--success { color: var(--color-success); border: 1px solid rgba(95,163,122,0.4); }
+.badge--outline.badge--warning { color: var(--color-warning); border: 1px solid rgba(217,154,58,0.4); }
+.badge--outline.badge--error   { color: var(--color-error); border: 1px solid rgba(194,84,80,0.4); }
+
+/* --- solid --- */
+.badge--solid.badge--neutral { color: var(--color-text-primary); background: var(--color-surface-3); }
+.badge--solid.badge--accent  { color: var(--color-text-on-accent); background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent)); }
+.badge--solid.badge--success { color: #0e1a12; background: var(--color-success); }
+.badge--solid.badge--warning { color: #1f1204; background: var(--color-warning); }
+.badge--solid.badge--error   { color: #1f0a09; background: var(--color-error); }
+
+/* --- glass --- */
+.badge--glass {
+  background: var(--color-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+.badge--glass.badge--neutral { color: var(--color-text-secondary); border: 1px solid var(--color-glass-border); }
+.badge--glass.badge--accent  { color: var(--color-accent-bright); border: 1px solid var(--color-glass-border-strong); }
+.badge--glass.badge--success { color: var(--color-success); border: 1px solid rgba(95,163,122,0.35); }
+.badge--glass.badge--warning { color: var(--color-warning); border: 1px solid rgba(217,154,58,0.35); }
+.badge--glass.badge--error   { color: var(--color-error); border: 1px solid rgba(194,84,80,0.35); }

@@ -1,0 +1,153 @@
+.scroll-process {
+  padding-block: var(--space-9);
+  overflow: hidden; /* contains the soft-lighting glow's blur without causing horizontal scroll */
+}
+
+.scroll-process__line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+}
+
+.scroll-process__station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ---- Connecting line ---- */
+.scroll-process__connector {
+  width: 2px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background var(--dur-slow) var(--ease-out), box-shadow var(--dur-slow) var(--ease-out);
+}
+
+.scroll-process__connector--filled {
+  background: linear-gradient(var(--color-accent), var(--color-accent-bright));
+  box-shadow: 0 0 10px rgba(18, 135, 143, 0.4);
+}
+
+/* ---- Panel ---- */
+.scroll-process__panel {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin-block: var(--space-2);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+  overflow: hidden;
+  transition: transform var(--dur-slow) var(--ease-out), opacity var(--dur-slow) var(--ease-out);
+}
+
+/* ---- Soft lighting: a glow behind the panel, only visible when active ---- */
+.scroll-process__glow {
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(18, 135, 143, 0.28), transparent 70%);
+  filter: blur(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+.scroll-process__number,
+.scroll-process__icon,
+.scroll-process__label {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-process__number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  transition: color var(--dur-slow) var(--ease-out);
+}
+
+.scroll-process__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  box-shadow: var(--shadow-neo-out-sm);
+  transition: color var(--dur-slow) var(--ease-out), background var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out);
+}
+
+.scroll-process__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: color var(--dur-slow) var(--ease-out);
+}
+
+/* ---- Per-state visual treatment ---- */
+.scroll-process__station--upcoming .scroll-process__panel {
+  opacity: 0.45;
+  transform: scale(0.96);
+}
+
+.scroll-process__station--passed .scroll-process__panel {
+  opacity: 0.85;
+}
+
+.scroll-process__station--passed .scroll-process__icon {
+  color: var(--color-accent);
+  box-shadow: var(--shadow-neo-in-sm);
+}
+
+.scroll-process__station--passed .scroll-process__number {
+  color: var(--color-accent);
+}
+
+.scroll-process__station--active .scroll-process__panel {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.scroll-process__station--active .scroll-process__glow {
+  opacity: 1;
+}
+
+.scroll-process__station--active .scroll-process__icon {
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent));
+  box-shadow: 0 0 22px rgba(18, 135, 143, 0.45);
+}
+
+.scroll-process__station--active .scroll-process__number,
+.scroll-process__station--active .scroll-process__label {
+  color: var(--color-accent-bright);
+}
+
+@media (max-width: 640px) {
+  .scroll-process__connector {
+    height: 32px;
+  }
+  .scroll-process__panel {
+    padding: var(--space-4) var(--space-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-process__panel,
+  .scroll-process__connector,
+  .scroll-process__glow,
+  .scroll-process__icon,
+  .scroll-process__number,
+  .scroll-process__label {
+    transition: none;
+  }
+}

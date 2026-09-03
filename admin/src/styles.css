@@ -1,0 +1,222 @@
+/* Deliberately minimal — this is an internal tool for staff, not the
+   public site, so it doesn't reuse frontend/'s design-token system.
+   Kept in one file since the app is small. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  background: #f4f5f7;
+  color: #1a1a1a;
+}
+
+button, select, input, textarea { font-family: inherit; font-size: 14px; }
+
+button {
+  cursor: pointer;
+  border: 1px solid #1a1a1a;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+select, input, textarea {
+  padding: 8px 10px;
+  border: 1px solid #c9ccd1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+a { color: #a5731d; }
+
+.loading-screen, .auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: #fff;
+  border: 1px solid #e2e4e8;
+  border-radius: 10px;
+  padding: 32px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-card h1 { font-size: 18px; margin: 0; }
+.auth-card__hint { font-size: 13px; color: #666; margin: 0; }
+.auth-card__error { font-size: 13px; color: #b3261e; margin: 0; }
+.auth-card label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+
+.app-shell__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #161616;
+  color: #fff;
+}
+
+.app-shell__brand { color: #eeca8c; font-weight: 600; text-decoration: none; }
+.app-shell__account { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.app-shell__account button { background: transparent; border-color: #555; }
+
+.app-shell__main { padding: 24px; max-width: 1100px; margin: 0 auto; }
+
+.dashboard-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.error-banner {
+  background: #fdecea;
+  color: #b3261e;
+  border: 1px solid #f5c2c0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.inquiry-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e2e4e8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.inquiry-table th, .inquiry-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef0f2;
+  font-size: 13px;
+}
+
+.inquiry-table th { background: #fafbfc; font-weight: 600; }
+.inquiry-table a { text-decoration: none; font-weight: 600; }
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: #eee;
+  color: #444;
+}
+
+.status-badge--new { background: #e8f0fe; color: #1a56db; }
+.status-badge--reviewing { background: #fef6e0; color: #92650a; }
+.status-badge--quoted { background: #eae5fc; color: #5b3fc9; }
+.status-badge--negotiating { background: #fde9d8; color: #b5540a; }
+.status-badge--won { background: #e3f5e8; color: #1c7a3c; }
+.status-badge--lost { background: #fdecea; color: #b3261e; }
+.status-badge--closed { background: #e9ebee; color: #555; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.detail-head h1 { margin: 0 0 4px; font-size: 20px; }
+.detail-head__sub { margin: 0; font-size: 13px; color: #666; }
+.detail-head__actions { display: flex; gap: 8px; align-items: center; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.detail-card {
+  background: #fff;
+  border: 1px solid #e2e4e8;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.detail-card--wide { grid-column: 1 / -1; }
+.detail-card h2 { font-size: 14px; margin: 0 0 12px; }
+.detail-card__hint { font-size: 12px; color: #888; margin: -8px 0 12px; }
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f2f3f5;
+  font-size: 13px;
+}
+
+.detail-row dt { color: #666; }
+.detail-row dd { margin: 0; text-align: right; }
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #f2f3f5;
+}
+
+.contact-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.file-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+.file-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.file-list__size { color: #888; }
+.file-list li button { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 12px; }
+
+.note-list { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 10px; max-height: 260px; overflow-y: auto; }
+
+.note-list li { border: 1px solid #eef0f2; border-radius: 6px; padding: 10px; }
+.note-list__meta { display: flex; justify-content: space-between; font-size: 12px; color: #888; margin-bottom: 4px; }
+.note-list li p { margin: 0; font-size: 13px; }
+.note-list__empty { border: none; padding: 0; color: #888; font-size: 13px; }
+
+.note-form { display: flex; flex-direction: column; gap: 8px; }
+.note-form textarea { resize: vertical; }
+.note-form button { align-self: flex-end; }
+
+@media (max-width: 760px) {
+  .detail-grid { grid-template-columns: 1fr; }
+}

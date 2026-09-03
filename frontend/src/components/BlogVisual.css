@@ -1,0 +1,14 @@
+.blog-visual {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  background: linear-gradient(155deg, var(--color-surface-2), var(--color-surface-3));
+  color: var(--color-accent-bright);
+  box-shadow: var(--shadow-neo-in-sm);
+}
+
+.blog-visual--large {
+  aspect-ratio: 16 / 8;
+  border-radius: var(--radius-lg);
+}

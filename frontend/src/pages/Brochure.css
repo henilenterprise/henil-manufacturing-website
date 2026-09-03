@@ -1,0 +1,42 @@
+.brochure-page {
+  padding-block: var(--space-8) var(--space-9);
+  max-width: 800px;
+}
+
+.brochure-page__title {
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.brochure-page__sub {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+  margin-bottom: var(--space-7);
+}
+
+.brochure-page__checking {
+  padding: var(--space-7) 0;
+}
+
+.brochure-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.brochure-page__preview {
+  overflow: hidden;
+}
+
+.brochure-page__frame {
+  width: 100%;
+  height: 75vh;
+  min-height: 420px;
+  border: none;
+  border-radius: var(--radius-md);
+  display: block;
+}

@@ -1,0 +1,106 @@
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.review-block {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+
+.review-grid__wide {
+  grid-column: 1 / -1;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+}
+
+.review-row:last-child {
+  border-bottom: none;
+}
+
+.review-row__label {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.review-row__value {
+  color: var(--color-text-primary);
+  text-align: right;
+  word-break: break-word;
+}
+
+.review-files {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+}
+
+.review-files li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+.review-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: var(--space-4);
+}
+
+.review-status p {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.review-status--error {
+  color: var(--color-error);
+}
+
+.review-status__field-errors {
+  list-style: disc;
+  margin-left: 26px; /* roughly lines up with the text after the AlertTriangle icon + gap above, rather than sitting flush against the card edge */
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.review-submit {
+  width: 100%;
+  justify-content: center;
+}
+
+.review-submit__spinner {
+  animation: review-spin 1s linear infinite;
+}
+
+@keyframes review-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (min-width: 720px) {
+  .review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review-submit__spinner {
+    animation: none;
+  }
+}

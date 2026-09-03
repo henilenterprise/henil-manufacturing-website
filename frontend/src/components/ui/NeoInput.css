@@ -1,0 +1,56 @@
+.neo-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.neo-input-group__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.neo-input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-neo-in);
+  padding-inline: var(--space-4);
+  transition: box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.neo-input__icon { color: var(--color-text-muted); flex-shrink: 0; }
+
+.neo-input input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-block: 12px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.neo-input input::placeholder { color: var(--color-text-muted); }
+
+.neo-input:focus-within {
+  box-shadow: var(--shadow-neo-in), 0 0 0 2px var(--color-accent-wash), 0 0 0 1px var(--color-accent);
+}
+
+.neo-input--error {
+  box-shadow: var(--shadow-neo-in), 0 0 0 1px var(--color-error);
+}
+
+.neo-input-group__error {
+  font-size: 12px;
+  color: var(--color-error);
+}
+
+.neo-input-group__hint {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,20 @@
+.gallery-hero {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.gallery-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 680px;
+}
+
+.gallery-hero__title {
+  font-size: clamp(30px, 4.6vw, 48px);
+  color: var(--color-text-primary);
+}
+
+.gallery-hero__sub {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}

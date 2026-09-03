@@ -1,0 +1,154 @@
+/* ============================================================
+   HENIL ENTERPRISE — DESIGN TOKENS
+   Palette derived directly from the real company brochure
+   (Henil-Enterprise-Company-Brochure.pdf), sampled pixel-by-pixel
+   from the rendered pages so every value below traces back to the
+   actual printed artwork:
+     page background   #FFFFFF  (clean white stock)
+     cream section bg  #F6F5F1  (alternating section tint)
+     mint tint         #E1EEEC  (illustration fills / soft boxes)
+     brand teal        #0B6E76  (headings' rule, eyebrow labels, icons)
+     deep teal         #083E44  (full-bleed dark section backgrounds)
+     ink text          #23262A  (heading/body text)
+     secondary text    #767B80  (supporting copy, captions)
+     hairline border   #E3E4E6  (card borders, dividers)
+   ============================================================ */
+
+:root {
+  /* ---- Color: background & surfaces (brochure white/cream stock) ---- */
+  --color-bg: #ffffff;              /* brochure page white */
+  --color-bg-elevated: #ffffff;
+  --color-surface: #f6f5f1;         /* brochure alternating cream section */
+  --color-surface-2: #efeee8;       /* neomorphic base */
+  --color-surface-3: #e7e4dc;       /* hover/active elevation */
+  --color-surface-tint: #e1eeec;    /* brochure mint illustration fill */
+
+  /* ---- Color: glass ---- */
+  --color-glass: rgba(255, 255, 255, 0.68);
+  --color-glass-strong: rgba(255, 255, 255, 0.9);
+  --color-glass-border: rgba(11, 110, 118, 0.16);
+  --color-glass-border-strong: rgba(11, 110, 118, 0.32);
+  --color-glass-highlight: rgba(11, 110, 118, 0.12); /* brand teal, used for glass sheen */
+
+  /* ---- Color: text ---- */
+  --color-text-primary: #23262a;             /* sampled brochure heading ink */
+  --color-text-secondary: rgba(35, 38, 42, 0.66);
+  --color-text-muted: rgba(35, 38, 42, 0.44);
+  --color-text-on-accent: #ffffff;
+  --color-text-on-dark: #f0f4f3;             /* for use on --color-accent-deep panels */
+
+  /* ---- Color: accent (brochure teal family, hue ~186° held constant) ---- */
+  --color-accent-bright: #12878f;  /* brightened teal for highlights/hover */
+  --color-accent: #0b6e76;         /*   sampled brochure teal — main CTA/border/icons */
+  --color-accent-deep: #083e44;    /*   sampled brochure dark-section teal */
+  --color-accent-wash: rgba(11, 110, 118, 0.08);
+
+  /* ---- Color: functional ---- */
+  --color-success: #3f8f68;
+  --color-success-wash: rgba(63, 143, 104, 0.12);
+  --color-warning: #c98a2e;
+  --color-warning-wash: rgba(201, 138, 46, 0.12);
+  --color-error: #b5453f;
+  --color-error-wash: rgba(181, 69, 63, 0.12);
+
+  /* ---- Type ---- */
+  --font-display: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* ---- Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* ---- Spacing ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Layout ---- */
+  --content-max: 1200px;
+  --content-pad: clamp(20px, 5vw, 56px);
+
+  /* ---- Glassmorphism ---- */
+  --glass-blur: blur(18px);
+  --glass-shadow: 0 8px 32px rgba(35, 38, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --glass-shadow-strong: 0 16px 48px rgba(35, 38, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  /* ---- Neomorphism (computed against --color-surface-2) ---- */
+  --neo-shadow-dark: rgba(35, 38, 42, 0.14);
+  --neo-shadow-light: rgba(255, 255, 255, 0.9); /* soft sheen for the light cream surface */
+  --shadow-neo-out: 6px 6px 14px var(--neo-shadow-dark), -4px -4px 10px var(--neo-shadow-light);
+  --shadow-neo-out-sm: 3px 3px 7px var(--neo-shadow-dark), -2px -2px 5px var(--neo-shadow-light);
+  --shadow-neo-in: inset 4px 4px 9px var(--neo-shadow-dark),
+    inset -3px -3px 7px var(--neo-shadow-light);
+  --shadow-neo-in-sm: inset 3px 3px 6px var(--neo-shadow-dark),
+    inset -2px -2px 4px var(--neo-shadow-light);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-med: 300ms;
+  --dur-slow: 550ms;
+
+  /* ---- Z-index scale ---- */
+  --z-dropdown: 40;
+  --z-navbar: 50;
+  --z-modal-backdrop: 90;
+  --z-modal: 100;
+  --z-toast: 110;
+}
+
+/* ---- Lighter blur on narrow viewports ----
+   Backdrop-filter cost scales with both blur radius and the pixel area
+   being blurred; phones are also disproportionately likely to be the
+   least powerful devices rendering this site. Every glass surface reads
+   --glass-blur as a variable (see GlassCard.css, GlassPanel.css,
+   MainNav.css, and every other component using backdrop-filter), so
+   this one override reduces the cost everywhere at once — a real,
+   measurable per-frame compositing saving on exactly the class of
+   device the "remain fast on normal mobile devices" requirement is
+   about, not just a cosmetic tweak. */
+@media (max-width: 640px) {
+  :root {
+    --glass-blur: blur(10px);
+  }
+}
+
+/* ---- Graceful fallback for browsers without backdrop-filter support ----
+   (older Firefox before v103, some older Android WebView builds — real,
+   still-encountered gaps, not a hypothetical). Every glass component in
+   this codebase already applies `backdrop-filter` and
+   `-webkit-backdrop-filter` together, so testing for the unprefixed
+   property here is sufficient: a browser that only understands the
+   -webkit- prefixed form has, in every real-world case that matters,
+   shipped the unprefixed one alongside it for years.
+   Without any blur applied, the semi-transparent --color-glass*
+   backgrounds alone would look like a muddy, low-contrast smear over
+   whatever varied content sits behind them — text and icons on top
+   become hard to read. Raising the opacity here instead makes every
+   glass surface render as a solid off-white panel — a different look,
+   but a legible, intentional one, not a degraded version of the
+   blurred design. */
+@supports not (backdrop-filter: blur(1px)) {
+  :root {
+    --color-glass: rgba(255, 255, 255, 0.96);
+    --color-glass-strong: rgba(255, 255, 255, 0.99);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

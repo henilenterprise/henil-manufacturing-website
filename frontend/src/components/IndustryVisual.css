@@ -1,0 +1,48 @@
+.industry-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-glass-border);
+  overflow: hidden;
+}
+
+.industry-visual--large {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-lg);
+}
+
+.industry-visual__ring {
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(18, 135, 143, 0.25) 90deg,
+    transparent 180deg
+  );
+  animation: industry-ring-spin 6s linear infinite;
+}
+
+.industry-visual__icon {
+  position: relative;
+  z-index: 1;
+  color: var(--color-accent-bright);
+}
+
+@keyframes industry-ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-visual__ring {
+    animation: none;
+  }
+}

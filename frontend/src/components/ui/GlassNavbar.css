@@ -1,0 +1,98 @@
+.glass-navbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-navbar);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out);
+}
+
+.glass-navbar--scrolled {
+  background: var(--color-glass-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--color-glass-border);
+}
+
+.glass-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: var(--space-5);
+}
+
+.glass-navbar__brand {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+}
+
+.glass-navbar__links {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+  flex: 1;
+  justify-content: center;
+}
+
+.glass-navbar__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  position: relative;
+  padding-block: 4px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.glass-navbar__link:hover { color: var(--color-accent-bright); }
+
+.glass-navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: right var(--dur-med) var(--ease-out);
+}
+
+.glass-navbar__link:hover::after { right: 0; }
+
+.glass-navbar__cta { display: none; flex-shrink: 0; }
+
+.glass-navbar__burger {
+  display: grid;
+  place-items: center;
+  color: var(--color-text-primary);
+  padding: 6px;
+}
+
+.glass-navbar__mobile {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-glass-border);
+  transition: max-height var(--dur-med) var(--ease-out);
+}
+
+.glass-navbar__mobile--open { max-height: 480px; }
+
+.glass-navbar__mobile-link {
+  padding: 14px var(--content-pad);
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-navbar__mobile-cta { margin: var(--space-4) var(--content-pad) var(--space-5); }
+
+@media (min-width: 960px) {
+  .glass-navbar__links { display: flex; }
+  .glass-navbar__cta { display: block; }
+  .glass-navbar__burger { display: none; }
+  .glass-navbar__mobile { display: none; }
+}

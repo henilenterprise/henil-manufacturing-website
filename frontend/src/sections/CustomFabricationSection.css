@@ -1,0 +1,46 @@
+.custom-fab__panel {
+  background: linear-gradient(135deg, var(--color-glass-strong), rgba(11, 110, 118, 0.06));
+}
+
+.custom-fab__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 640px;
+}
+
+.custom-fab__title {
+  font-size: clamp(26px, 3.6vw, 38px);
+  color: var(--color-text-primary);
+}
+
+.custom-fab__body {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+.custom-fab__inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+  margin-block: var(--space-2);
+}
+
+.custom-fab__inputs li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow-neo-out-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.custom-fab__inputs li svg {
+  color: var(--color-accent-bright);
+  flex-shrink: 0;
+}

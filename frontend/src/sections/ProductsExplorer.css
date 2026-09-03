@@ -1,0 +1,99 @@
+.products-explorer__featured {
+  margin-bottom: var(--space-9);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.products-explorer__featured-item {
+  position: relative;
+}
+
+.products-explorer__featured-badge {
+  position: absolute;
+  top: -10px;
+  left: var(--space-4);
+  z-index: 2;
+}
+
+.products-explorer__toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.products-explorer__search {
+  flex: 1;
+}
+
+.products-explorer__sort {
+  width: 100%;
+}
+
+.products-explorer__chips {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-6);
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.products-explorer__chip {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow-neo-out-sm);
+  transition: color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.products-explorer__chip:hover {
+  color: var(--color-accent-bright);
+}
+
+.products-explorer__chip--active {
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent));
+  box-shadow: none;
+}
+
+.products-explorer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .products-explorer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .products-explorer__toolbar {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .products-explorer__sort {
+    width: 220px;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .products-explorer__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .products-explorer__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

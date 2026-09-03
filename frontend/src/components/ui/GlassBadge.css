@@ -1,0 +1,26 @@
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-glass-border);
+}
+
+.glass-badge--neutral { color: var(--color-text-secondary); }
+
+.glass-badge--accent {
+  color: var(--color-accent-bright);
+  border-color: var(--color-glass-border-strong);
+}
+
+.glass-badge--success { color: var(--color-success); border-color: rgba(95, 163, 122, 0.35); }
+.glass-badge--warning { color: var(--color-warning); border-color: rgba(217, 154, 58, 0.35); }
+.glass-badge--error { color: var(--color-error); border-color: rgba(194, 84, 80, 0.35); }

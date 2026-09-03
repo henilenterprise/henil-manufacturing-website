@@ -1,0 +1,33 @@
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-neo-out);
+  transition: box-shadow var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.neo-btn--sm { padding: 8px 14px; font-size: 13px; }
+.neo-btn--md { padding: 11px 18px; font-size: 14px; }
+
+.neo-btn:hover { color: var(--color-accent-bright); }
+
+.neo-btn:active {
+  box-shadow: var(--shadow-neo-in);
+  transform: translateY(1px);
+}
+
+.neo-btn--active {
+  box-shadow: var(--shadow-neo-in);
+  color: var(--color-accent-bright);
+}
+
+.neo-btn:focus-visible {
+  outline: 2px solid var(--color-accent-bright);
+  outline-offset: 2px;
+}

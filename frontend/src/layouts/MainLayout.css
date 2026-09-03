@@ -1,0 +1,6 @@
+/* The floating nav is position:fixed and out of normal flow, so every
+   page needs top clearance equal to roughly its resting height + margin
+   to avoid the first fold being covered on load (before any scroll). */
+.site-main {
+  padding-top: 92px;
+}

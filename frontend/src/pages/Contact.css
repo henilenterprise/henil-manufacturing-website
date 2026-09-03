@@ -1,0 +1,215 @@
+.contact-hero {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.contact-hero__inner {
+  max-width: 68ch;
+}
+
+.contact-hero__title {
+  font-size: clamp(30px, 4.8vw, 50px);
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+}
+
+.contact-hero__title em {
+  font-style: italic;
+  color: var(--color-accent-bright);
+}
+
+.contact-hero__sub {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-4);
+}
+
+.contact-hero__sub a {
+  color: var(--color-accent-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-page {
+  padding-top: 0;
+}
+
+.contact-page__grid {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.contact-page__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.contact-card__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.contact-card__list li svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-card__list a {
+  color: var(--color-text-primary);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.contact-card__list a:hover {
+  color: var(--color-accent-bright);
+}
+
+.contact-card__note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.contact-card__note code {
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+}
+
+.contact-map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-glass-border);
+  background: var(--color-surface);
+  aspect-ratio: 4 / 3;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  filter: grayscale(0.3) invert(0.92) contrast(0.9);
+}
+
+.contact-page__form {
+  height: fit-content;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-form__row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.contact-form__optional {
+  margin-left: var(--space-2);
+  font-size: 10px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+.contact-form__textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+  background: var(--color-surface-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.contact-form__textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.contact-form__textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-wash);
+}
+
+.contact-form__note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.contact-form__note a {
+  color: var(--color-accent-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-page__related {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.contact-page__related-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-page__related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.contact-page__related-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.contact-page__related-links a:hover {
+  color: var(--color-accent-bright);
+}
+
+@media (min-width: 900px) {
+  .contact-page__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-8);
+  }
+
+  .contact-form__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}

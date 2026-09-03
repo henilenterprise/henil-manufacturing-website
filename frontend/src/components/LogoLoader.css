@@ -1,0 +1,74 @@
+.logo-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  background: var(--color-bg);
+  animation: loader-fade-in var(--dur-slow) var(--ease-out);
+}
+
+.logo-loader__mark {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  animation: loader-breathe 2.4s var(--ease-out) infinite;
+}
+
+/* diagonal light sweep — an overlay gradient animated across the mark,
+   blended so it reads as a soft teal sheen catching the mark rather
+   than a redraw. Sized 2x width and moved via `transform` rather than
+   animating `background-position` directly — compositor-only (GPU), no
+   per-frame repaint. Same technique as HeroVisual.css's equivalent
+   sweep. Uses `multiply` (not `screen`) since this theme's surfaces are
+   light — multiply is the blend mode that reads as a shine on a light
+   background instead of washing it out toward white. */
+.logo-loader__mark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(11, 110, 118, 0.22) 50%,
+    transparent 60%
+  );
+  mix-blend-mode: multiply;
+  animation: loader-sweep 2.4s var(--ease-out) infinite;
+  will-change: transform;
+}
+
+.logo-loader__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+@keyframes loader-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes loader-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+@keyframes loader-sweep {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-loader { animation: none; }
+  .logo-loader__mark { animation: none; }
+  .logo-loader__mark::after { animation: none; opacity: 0; }
+}

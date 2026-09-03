@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Henil Enterprise">
+  <!-- outer diamond (brochure teal) -->
+  <path d="M32 3 L61 32 L32 61 L3 32 Z" fill="none" stroke="#0B6E76" stroke-width="4" />
+  <!-- inner diamond, slightly inset — echoes the brochure's double-outline mark -->
+  <path d="M32 12 L52 32 L32 52 L12 32 Z" fill="none" stroke="#0B6E76" stroke-width="2" opacity="0.55" />
+  <!-- bold geometric "H" -->
+  <rect x="21" y="20" width="6.5" height="24" rx="1" fill="#0B6E76" />
+  <rect x="36.5" y="20" width="6.5" height="24" rx="1" fill="#0B6E76" />
+  <rect x="21" y="28.75" width="22" height="6.5" rx="1" fill="#0B6E76" />
+</svg>

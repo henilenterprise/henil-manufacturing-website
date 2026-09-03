@@ -1,0 +1,12 @@
+.about-capabilities__head {
+  padding-block: var(--space-9) var(--space-6);
+}
+
+.about-capabilities__foot-section {
+  padding-block: var(--space-7) var(--space-9);
+}
+
+.about-capabilities__foot {
+  display: flex;
+  justify-content: center;
+}

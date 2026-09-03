@@ -1,0 +1,25 @@
+.products-hero {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.products-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 680px;
+}
+
+.products-hero__title {
+  font-size: clamp(30px, 4.6vw, 48px);
+  color: var(--color-text-primary);
+}
+
+.products-hero__sub {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+.products-hero__brochure {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+}

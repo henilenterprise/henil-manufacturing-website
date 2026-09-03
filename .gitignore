@@ -1,0 +1,28 @@
+node_modules
+dist
+build
+
+# Every real env file, at any depth (backend/.env, frontend/.env,
+# admin/.env, and any environment-specific variant like
+# .env.production or .env.local) — but never the .env.example
+# templates, which are meant to be committed and are how someone new
+# to this repo knows what to configure. `.env*` is intentionally
+# broader than just `.env`/`.env.local` (the two names actually used
+# in local development so far) so a future `.env.production` or
+# `.env.staging` is protected by default too, without needing this
+# file edited again the day someone adds one.
+.env
+.env.*
+!.env.example
+
+*.local
+.DS_Store
+npm-debug.log*
+
+# Defense in depth beyond env files specifically — private keys and
+# certificates should never end up in this repo either, and there's no
+# legitimate reason a committed file would ever need these extensions.
+*.pem
+*.key
+*.p12
+*.pfx

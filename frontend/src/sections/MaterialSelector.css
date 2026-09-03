@@ -1,0 +1,188 @@
+.material-selector__toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: var(--space-6);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-neo-in-sm);
+}
+
+.material-selector__toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.material-selector__toggle-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.material-selector__toggle-btn--active {
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent));
+  box-shadow: var(--shadow-neo-out-sm);
+}
+
+.material-selector__panel {
+  margin-bottom: var(--space-6);
+  animation: material-selector-in var(--dur-med) var(--ease-out);
+}
+
+@keyframes material-selector-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.material-selector__intro {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.material-selector__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-bright);
+}
+
+.material-selector__title {
+  font-size: 22px;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.material-selector__tagline {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.material-selector__details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.material-selector__block-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.material-selector__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.material-selector__list li {
+  position: relative;
+  padding-left: var(--space-4);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.material-selector__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* Deliberately distinct from real data elsewhere on the site — same
+   dashed/italic/muted treatment used for the About page's placeholder
+   company facts, so this unmistakably reads as "not a real spec yet"
+   rather than an actual thickness range. */
+.material-selector__placeholder {
+  display: inline-block;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-bottom: 2px;
+}
+
+.material-selector__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.material-selector__products {
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.material-selector__products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.material-selector__unsure {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--color-accent-bright);
+}
+
+.material-selector__unsure h3 {
+  font-size: 17px;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.material-selector__unsure p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 640px) {
+  .material-selector__details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .material-selector__products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 720px) {
+  .material-selector__unsure {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1080px) {
+  .material-selector__products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

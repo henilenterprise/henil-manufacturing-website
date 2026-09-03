@@ -1,0 +1,20 @@
+.industries-hero {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.industries-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 680px;
+}
+
+.industries-hero__title {
+  font-size: clamp(30px, 4.6vw, 48px);
+  color: var(--color-text-primary);
+}
+
+.industries-hero__sub {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}

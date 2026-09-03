@@ -1,0 +1,85 @@
+.quote-progress {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+}
+
+.quote-progress__item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.quote-progress__item:last-child {
+  flex-shrink: 1;
+}
+
+.quote-progress__node {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow-neo-out-sm);
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.quote-progress__node:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.quote-progress__node--done {
+  color: var(--color-accent-bright);
+  box-shadow: var(--shadow-neo-in-sm);
+}
+
+.quote-progress__node--active {
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent));
+  box-shadow: none;
+}
+
+.quote-progress__label {
+  display: none;
+  margin-inline: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.quote-progress__label--active {
+  color: var(--color-text-primary);
+}
+
+.quote-progress__connector {
+  width: 24px;
+  height: 1px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.12);
+  margin-inline: var(--space-1);
+}
+
+.quote-progress__connector--done {
+  background: var(--color-accent);
+}
+
+@media (min-width: 720px) {
+  .quote-progress__label {
+    display: inline;
+  }
+  .quote-progress__connector {
+    flex: 1;
+    width: auto;
+  }
+}

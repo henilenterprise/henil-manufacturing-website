@@ -1,0 +1,108 @@
+.floating-whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: var(--z-navbar);
+  display: flex;
+  flex-direction: row-reverse; /* button visually stays on the outer (right) edge; tooltip extends inward (left) toward the center of the screen instead of off the viewport edge */
+  align-items: center;
+  transition: bottom var(--dur-med) var(--ease-out);
+}
+
+.floating-whatsapp__button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent) 60%, var(--color-accent-deep));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.floating-whatsapp__button:hover {
+  transform: scale(1.06);
+}
+
+.floating-whatsapp__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  animation: floating-whatsapp-pulse 2.4s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+@keyframes floating-whatsapp-pulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* Tooltip: "Chat with us on WhatsApp" — shown on hover/focus. Extends
+   leftward (toward screen center) since the button now sits at the
+   right edge — see the row-reverse comment above. */
+.floating-whatsapp__tooltip {
+  margin-right: 12px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-glass-strong);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-glass-border);
+  color: var(--color-text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.floating-whatsapp:hover .floating-whatsapp__tooltip,
+.floating-whatsapp:focus-within .floating-whatsapp__tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Compound selector (both classes), not the modifier alone — a
+   single-class selector here would tie in specificity with the 960px
+   breakpoint rule below and let source order, not intent, decide which
+   wins between 960-1023px (silently un-raising the button while
+   MobileStickyCTA is still visible in that range). The compound
+   selector's higher specificity wins unconditionally instead. */
+/* Raised offset accounts for MobileStickyCTA's worst-case real height:
+   12px top padding + 48px content + 12px bottom padding + up to ~34px
+   of env(safe-area-inset-bottom) on notched devices ≈ 106px, plus a
+   12px gap above it so the two never visually touch. Rounded up to
+   120px rather than the exact 118px for a bit of extra margin — an
+   extra few pixels of clearance on non-notched phones is a harmless
+   tradeoff against actually overlapping the bar on ones that need it. */
+.floating-whatsapp.floating-whatsapp--raised {
+  bottom: 120px;
+}
+
+/* ---- Breakpoints, in ascending order so the cascade is unambiguous ---- */
+
+@media (min-width: 960px) {
+  .floating-whatsapp {
+    right: 28px;
+    bottom: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .floating-whatsapp.floating-whatsapp--raised {
+    bottom: 28px; /* MobileStickyCTA hides itself here, so no conflict remains */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-whatsapp__pulse {
+    animation: none;
+    display: none;
+  }
+}

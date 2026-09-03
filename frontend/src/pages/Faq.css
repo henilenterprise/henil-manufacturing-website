@@ -1,0 +1,20 @@
+.faq-page {
+  padding-block: var(--space-8) var(--space-9);
+}
+
+.faq-page__head {
+  max-width: 680px;
+  margin-bottom: var(--space-7);
+}
+
+.faq-page__title {
+  font-size: clamp(30px, 4.6vw, 48px);
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+}
+
+.faq-page__sub {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-3);
+}

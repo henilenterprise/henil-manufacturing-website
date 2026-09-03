@@ -1,0 +1,55 @@
+.gallery-explorer__chips {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-6);
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-explorer__chip {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow-neo-out-sm);
+  transition: color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.gallery-explorer__chip:hover {
+  color: var(--color-accent-bright);
+}
+
+.gallery-explorer__chip--active {
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent));
+  box-shadow: none;
+}
+
+/* Masonry via CSS multi-column layout — no JS measurement needed.
+   Each GalleryTile has break-inside: avoid so items never split across
+   columns, and its own margin-bottom creates the vertical gap. */
+.gallery-explorer__grid {
+  column-count: 2;
+  column-gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .gallery-explorer__grid {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1080px) {
+  .gallery-explorer__grid {
+    column-count: 4;
+  }
+}

@@ -1,0 +1,78 @@
+.cap-strip {
+  border-top: 1px solid var(--color-glass-border);
+  border-bottom: 1px solid var(--color-glass-border);
+  padding-block: var(--space-5);
+  background: var(--color-bg-elevated);
+}
+
+.cap-strip__row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.cap-strip__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.cap-strip__item:hover {
+  background: var(--color-accent-wash);
+}
+
+.cap-strip__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-accent-bright);
+  box-shadow: var(--shadow-neo-out-sm);
+}
+
+.cap-strip__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  /* Was `white-space: nowrap` — broke on mobile specifically because
+     the base layout is a 2-column grid, giving each item roughly
+     half the screen width to work with. "Custom Fabrication" (19
+     characters) doesn't fit on one line in that space, and nowrap
+     meant it had nowhere to go but overflow past its column edge —
+     visually cut off / overlapping the next item. Letting it wrap
+     naturally fixes this at every width; the item is already a flex
+     row that happily grows taller if a label needs two lines. */
+  overflow-wrap: break-word;
+  /* Flex children default to `min-width: auto`, which means "never
+     shrink below your content's natural, unwrapped width" — without
+     this override, the browser would keep trying to reserve room for
+     the full one-line "Custom Fabrication" regardless of the
+     `overflow-wrap` rule above, defeating it. `min-width: 0` is what
+     actually lets this element shrink to its column's real width and
+     wrap. Classic flexbox gotcha, and the real reason the bug needed
+     two changes, not just one. */
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .cap-strip__row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .cap-strip__row {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .cap-strip__item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+  }
+}

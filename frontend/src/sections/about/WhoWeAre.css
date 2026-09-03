@@ -1,0 +1,12 @@
+.who-we-are__inner {
+  max-width: 900px;
+}
+
+.who-we-are__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  max-width: 70ch;
+}

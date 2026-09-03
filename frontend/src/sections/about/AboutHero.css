@@ -1,0 +1,98 @@
+.about-hero {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.about-hero__inner {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.about-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about-hero__title {
+  font-size: clamp(30px, 4.8vw, 50px);
+  color: var(--color-text-primary);
+}
+
+.about-hero__title em {
+  font-style: italic;
+  color: var(--color-accent-bright);
+}
+
+.about-hero__sub {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  max-width: 58ch;
+}
+
+.about-hero__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about-hero__panel-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.about-hero__panel-location {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.about-hero__facts {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.about-hero__fact {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.about-hero__fact dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* Deliberately distinct from real data displays elsewhere on the site
+   (badges, chips, stat values) — dashed underline + italic + muted
+   color, so this unmistakably reads as an unfilled placeholder rather
+   than an actual company fact. */
+.about-hero__fact-placeholder {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  text-align: right;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-bottom: 1px;
+}
+
+.about-hero__panel-note {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  padding-top: var(--space-2);
+}
+
+@media (min-width: 960px) {
+  .about-hero__inner {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-8);
+  }
+}

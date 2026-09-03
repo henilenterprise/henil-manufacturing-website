@@ -1,0 +1,105 @@
+.fab-process__stepper {
+  display: flex;
+  overflow-x: auto;
+  gap: var(--space-2);
+  padding-bottom: var(--space-5);
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fab-process__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+  width: 108px;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-md);
+  scroll-snap-align: start;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.fab-process__step:hover {
+  background: var(--color-accent-wash);
+}
+
+.fab-process__step-node {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  box-shadow: var(--shadow-neo-out-sm);
+  transition: color var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out),
+    background var(--dur-med) var(--ease-out);
+}
+
+.fab-process__step--past .fab-process__step-node {
+  color: var(--color-accent);
+  box-shadow: var(--shadow-neo-in-sm);
+}
+
+.fab-process__step--active .fab-process__step-node {
+  color: var(--color-text-on-accent);
+  background: linear-gradient(155deg, var(--color-accent-bright), var(--color-accent));
+  box-shadow: none;
+}
+
+.fab-process__step-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.fab-process__step--active .fab-process__step-label {
+  color: var(--color-accent-bright);
+}
+
+.fab-process__step-number {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.fab-process__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  animation: fab-detail-in var(--dur-med) var(--ease-out);
+}
+
+@keyframes fab-detail-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fab-process__detail-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-bright);
+}
+
+.fab-process__detail-title {
+  font-size: 19px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.fab-process__detail-body {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}

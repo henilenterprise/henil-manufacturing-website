@@ -1,0 +1,85 @@
+.applications__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.applications__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.applications__card-title {
+  font-size: 17px;
+  color: var(--color-text-primary);
+  margin-top: var(--space-1);
+}
+
+.applications__card-body {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.applications__block {
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.applications__block-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.applications__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.applications__card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.applications__category-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent-bright);
+}
+
+.applications__category-link:hover {
+  text-decoration: underline;
+}
+
+/* When there's no category link (Protective Shields, Laboratory
+   Components have none yet), space-between with a single remaining
+   child would leave the button at the start instead of the end —
+   forcing it right explicitly keeps both card layouts visually
+   consistent regardless of which case applies. */
+.applications__card-foot > *:last-child {
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .applications__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .applications__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

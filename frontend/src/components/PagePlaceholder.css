@@ -1,0 +1,19 @@
+.page-placeholder {
+  padding-block: var(--space-8) var(--space-9);
+  min-height: 50vh;
+}
+
+.page-placeholder__body {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  max-width: 60ch;
+  margin-bottom: var(--space-4);
+}
+
+.page-placeholder__note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+}

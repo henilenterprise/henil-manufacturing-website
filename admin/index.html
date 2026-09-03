@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Henil Enterprise — Admin</title>
+    <!-- Belt-and-suspenders only: the real protection is that this app
+         is never linked from, or deployed on, the public site (see
+         ADMIN-DASHBOARD-ARCHITECTURE.md). noindex costs nothing and
+         stops it from ever appearing in search results if a URL leaks. -->
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

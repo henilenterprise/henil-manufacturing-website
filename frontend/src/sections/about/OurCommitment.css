@@ -1,0 +1,38 @@
+.our-commitment__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.our-commitment__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.our-commitment__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-bright);
+}
+
+.our-commitment__title {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  line-height: 1.35;
+}
+
+.our-commitment__body {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 720px) {
+  .our-commitment__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
