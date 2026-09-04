@@ -1,4 +1,4 @@
-import { generateInquiryReference } from "./inquiryCounter.service.js";
+
 
 // Mirrors MATERIAL_OPTIONS in frontend/src/data/quoteForm.data.js and the
 // `inquiries_material_known` CHECK constraint in the database migration.
@@ -162,12 +162,21 @@ export async function createInquiry(supabase, payload) {
 
   const resolvedProductId = await resolveProductId(supabase, payload.requirement?.productId);
 
-  // Reference number must exist BEFORE the insert — it's a NOT NULL
-  // UNIQUE column, not something the database fills in for us (see the
-  // comment on inquiries.reference_number in the migration for why this
-  // stays app-generated rather than moving to a DB sequence).
-  const referenceNumber = generateInquiryReference();
-  const row = mapPayloadToRow(payload, referenceNumber, resolvedProductId);
+// Generate the next inquiry reference directly from PostgreSQL.
+// The database sequence is persistent and safe across Render redeploys.
+const { data: referenceNumber, error: referenceError } = await supabase.rpc(
+  "next_inquiry_reference"
+);
+
+if (referenceError) {
+  const err = new Error(
+    `Failed to generate inquiry reference: ${referenceError.message}`
+  );
+  err.status = 502;
+  throw err;
+}
+
+const row = mapPayloadToRow(payload, referenceNumber, resolvedProductId);
 
   const { data: inserted, error: insertError } = await supabase
     .from("inquiries")
