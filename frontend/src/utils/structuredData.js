@@ -131,7 +131,16 @@ export function buildProductStructuredData(product, category) {
     description: product.shortDescription,
     category: category?.label,
     material: product.materials?.join(", "),
-    brand: { "@type": "Organization", name: company.name },
+    brand: {
+      "@type": "Organization",
+      name: company.name,
+    },
+    manufacturer: {
+      "@type": "Organization",
+      name: company.name,
+      url: origin(),
+    },
+    sku: product.id,
     url: `${origin()}/products/${product.id}`,
   };
 }
