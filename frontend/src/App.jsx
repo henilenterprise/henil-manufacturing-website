@@ -23,6 +23,37 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail.jsx"));
 const Capabilities = lazy(() => import("./pages/Capabilities.jsx"));
 const AcrylicFabricationAhmedabad = lazy(() => import("./pages/AcrylicFabricationAhmedabad.jsx"));
 const PolycarbonateFabricationAhmedabad = lazy(() => import("./pages/PolycarbonateFabricationAhmedabad.jsx"));
+const AcrylicMachineGuardManufacturerAhmedabad = lazy(() => import("./pages/AcrylicMachineGuardManufacturerAhmedabad.jsx"));
+const AcrylicTankManufacturerAhmedabad = lazy(
+  () => import("./pages/AcrylicTankManufacturerAhmedabad.jsx")
+);
+
+const CustomAcrylicFabricationAhmedabad = lazy(
+  () => import("./pages/CustomAcrylicFabricationAhmedabad.jsx")
+);
+const PolycarbonateMachineGuardManufacturerAhmedabad = lazy(
+  () => import("./pages/PolycarbonateMachineGuardManufacturerAhmedabad.jsx")
+);
+
+const AcrylicSightGlassManufacturerAhmedabad = lazy(
+  () => import("./pages/AcrylicSightGlassManufacturerAhmedabad.jsx")
+);
+
+const AcrylicInspectionWindowManufacturerAhmedabad = lazy(
+  () => import("./pages/AcrylicInspectionWindowManufacturerAhmedabad.jsx")
+);
+
+const AcrylicCncCuttingAhmedabad = lazy(
+  () => import("./pages/AcrylicCncCuttingAhmedabad.jsx")
+);
+
+const AcrylicBendingAhmedabad = lazy(
+  () => import("./pages/AcrylicBendingAhmedabad.jsx")
+);
+
+const AcrylicBoxManufacturerAhmedabad = lazy(
+  () => import("./pages/AcrylicBoxManufacturerAhmedabad.jsx")
+);
 const Industries = lazy(() => import("./pages/Industries.jsx"));
 const CustomFabrication = lazy(() => import("./pages/CustomFabrication.jsx"));
 const Gallery = lazy(() => import("./pages/Gallery.jsx"));
@@ -75,8 +106,47 @@ export default function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:slug" element={<ProductDetail />} />
             <Route path="/capabilities" element={<Capabilities />} />
-            <Route path="/acrylic-fabrication-ahmedabad"element={<AcrylicFabricationAhmedabad />}/>
-            <Route path="/polycarbonate-fabrication-ahmedabad"element={<PolycarbonateFabricationAhmedabad />}/>
+            <Route path="/acrylic-fabrication-ahmedabad" element={<AcrylicFabricationAhmedabad />} />
+            <Route path="/polycarbonate-fabrication-ahmedabad" element={<PolycarbonateFabricationAhmedabad />} />
+            <Route path="/acrylic-machine-guard-manufacturer-ahmedabad" element={<AcrylicMachineGuardManufacturerAhmedabad />} />
+            <Route
+  path="/acrylic-tank-manufacturer-ahmedabad"
+  element={<AcrylicTankManufacturerAhmedabad />}
+/>
+
+<Route
+  path="/custom-acrylic-fabrication-ahmedabad"
+  element={<CustomAcrylicFabricationAhmedabad />}
+/>
+            <Route
+  path="/polycarbonate-machine-guard-manufacturer-ahmedabad"
+  element={<PolycarbonateMachineGuardManufacturerAhmedabad />}
+/>
+
+<Route
+  path="/acrylic-sight-glass-manufacturer-ahmedabad"
+  element={<AcrylicSightGlassManufacturerAhmedabad />}
+/>
+
+<Route
+  path="/acrylic-inspection-window-manufacturer-ahmedabad"
+  element={<AcrylicInspectionWindowManufacturerAhmedabad />}
+/>
+
+<Route
+  path="/acrylic-cnc-cutting-ahmedabad"
+  element={<AcrylicCncCuttingAhmedabad />}
+/>
+
+<Route
+  path="/acrylic-bending-ahmedabad"
+  element={<AcrylicBendingAhmedabad />}
+/>
+
+<Route
+  path="/acrylic-box-manufacturer-ahmedabad"
+  element={<AcrylicBoxManufacturerAhmedabad />}
+/>
             <Route path="/industries" element={<Industries />} />
             <Route path="/custom-fabrication" element={<CustomFabrication />} />
             <Route path="/gallery" element={<Gallery />} />

@@ -50,6 +50,70 @@ export const SEO = {
       "Henil Enterprise provides custom polycarbonate fabrication in Ahmedabad including CNC cutting, bending, machine guards, covers, impact panels and industrial components.",
     path: "/polycarbonate-fabrication-ahmedabad",
   },
+  acrylicMachineGuardManufacturerAhmedabad: {
+    title: "Acrylic Machine Guard Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Henil Enterprise manufactures custom acrylic machine guards in Ahmedabad for CNC machines, automation, conveyors and industrial equipment, fabricated to your drawings.",
+    path: "/acrylic-machine-guard-manufacturer-ahmedabad",
+  },
+    acrylicTankManufacturerAhmedabad: {
+    title:
+      "Acrylic Tank Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Henil Enterprise manufactures custom acrylic tanks in Ahmedabad for industrial, laboratory, equipment and process applications, made to your drawing and dimensions.",
+    path: "/acrylic-tank-manufacturer-ahmedabad",
+  },
+
+  customAcrylicFabricationAhmedabad: {
+    title:
+      "Custom Acrylic Fabrication Ahmedabad | Henil Enterprise",
+    description:
+      "Custom acrylic fabrication in Ahmedabad for machine guards, tanks, boxes, covers, enclosures and industrial components manufactured to your drawing or sample.",
+    path: "/custom-acrylic-fabrication-ahmedabad",
+  },
+    polycarbonateMachineGuardManufacturerAhmedabad: {
+    title:
+      "Polycarbonate Machine Guard Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Henil Enterprise manufactures custom polycarbonate machine guards in Ahmedabad for CNC machines, automation, conveyors and industrial equipment.",
+    path: "/polycarbonate-machine-guard-manufacturer-ahmedabad",
+  },
+
+  acrylicSightGlassManufacturerAhmedabad: {
+    title: "Acrylic Sight Glass Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Custom acrylic sight glass components manufactured in Ahmedabad for tanks, equipment and industrial process visibility according to your requirements.",
+    path: "/acrylic-sight-glass-manufacturer-ahmedabad",
+  },
+
+  acrylicInspectionWindowManufacturerAhmedabad: {
+    title:
+      "Acrylic Inspection Window Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Custom acrylic and polycarbonate inspection windows manufactured in Ahmedabad for machinery, equipment and industrial process visibility.",
+    path: "/acrylic-inspection-window-manufacturer-ahmedabad",
+  },
+
+  acrylicCncCuttingAhmedabad: {
+    title: "Acrylic CNC Cutting Ahmedabad | Henil Enterprise",
+    description:
+      "Precision acrylic CNC cutting and routing in Ahmedabad for machine panels, guards, covers, mounting plates and custom industrial components.",
+    path: "/acrylic-cnc-cutting-ahmedabad",
+  },
+
+  acrylicBendingAhmedabad: {
+    title: "Acrylic Bending Ahmedabad | Custom Acrylic Fabrication",
+    description:
+      "Custom acrylic bending in Ahmedabad for machine covers, boxes, enclosures, panels and fabricated components made to your drawing.",
+    path: "/acrylic-bending-ahmedabad",
+  },
+
+  acrylicBoxManufacturerAhmedabad: {
+    title: "Acrylic Box Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Custom acrylic boxes manufactured in Ahmedabad for industrial, commercial, storage, display and equipment applications.",
+    path: "/acrylic-box-manufacturer-ahmedabad",
+  },
   industries: {
     title: "Industries We Serve | Industrial Acrylic Fabrication in Ahmedabad",
     description:

@@ -1,0 +1,619 @@
+/* =========================================================
+   Acrylic Machine Guard Manufacturer Ahmedabad
+   ========================================================= */
+
+.machine-guard-page {
+  overflow: hidden;
+}
+
+/* ---------- Shared ---------- */
+
+.machine-guard-page .section-heading {
+  max-width: 780px;
+  margin-bottom: 3rem;
+}
+
+.machine-guard-page .section-heading h2 {
+  margin: 0.65rem 0 1rem;
+}
+
+.machine-guard-page .section-heading p {
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ---------- Hero ---------- */
+
+.machine-guard-hero {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 6rem;
+}
+
+.machine-guard-hero__inner {
+  max-width: 1050px;
+}
+
+.machine-guard-hero h1 {
+  max-width: 900px;
+  margin: 1.25rem 0 1.5rem;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.machine-guard-hero h1 em {
+  font-style: normal;
+}
+
+.machine-guard-hero__lead {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.75;
+  opacity: 0.78;
+}
+
+.machine-guard-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.machine-guard-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+/* ---------- Intro ---------- */
+
+.machine-guard-intro {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.machine-guard-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 5rem;
+  align-items: start;
+}
+
+.machine-guard-intro h2 {
+  margin: 0.7rem 0 0;
+  font-size: clamp(2rem, 3.8vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.machine-guard-intro h2 em {
+  font-style: normal;
+}
+
+.machine-guard-intro__grid > div:last-child {
+  padding-top: 0.5rem;
+}
+
+.machine-guard-intro p {
+  margin: 0 0 1.25rem;
+  line-height: 1.8;
+  opacity: 0.76;
+}
+
+.machine-guard-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Guard Types ---------- */
+
+.machine-guard-types {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-types__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.machine-guard-type-card {
+  min-height: 250px;
+  padding: 2rem;
+}
+
+.machine-guard-type-card__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  border-radius: 14px;
+  border: 1px solid currentColor;
+  opacity: 0.75;
+}
+
+.machine-guard-type-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.machine-guard-type-card p {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.68;
+}
+
+/* ---------- Benefits ---------- */
+
+.machine-guard-benefits {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-benefits__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 5rem;
+  align-items: center;
+}
+
+.machine-guard-benefits__content h2 {
+  margin: 0.7rem 0 1.25rem;
+  font-size: clamp(2rem, 3.5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.machine-guard-benefits__content h2 em {
+  font-style: normal;
+}
+
+.machine-guard-benefits__content p {
+  margin: 0 0 1rem;
+  line-height: 1.8;
+  opacity: 0.72;
+}
+
+.machine-guard-checklist {
+  padding: 1.5rem;
+}
+
+.machine-guard-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+}
+
+.machine-guard-checklist__item:last-child {
+  border-bottom: 0;
+}
+
+.machine-guard-checklist__item svg {
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+}
+
+.machine-guard-checklist__item span {
+  line-height: 1.5;
+  opacity: 0.78;
+}
+
+/* ---------- Applications ---------- */
+
+.machine-guard-applications {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-tags {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.machine-guard-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 70px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 16px;
+  background: rgba(128, 128, 128, 0.035);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.machine-guard-tag:hover {
+  transform: translateY(-3px);
+  border-color: rgba(128, 128, 128, 0.4);
+  background: rgba(128, 128, 128, 0.07);
+}
+
+.machine-guard-tag svg {
+  flex: 0 0 auto;
+}
+
+.machine-guard-tag span {
+  line-height: 1.4;
+}
+
+/* ---------- Capabilities ---------- */
+
+.machine-guard-capabilities {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.machine-guard-capability-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 90px;
+  padding: 1.25rem;
+}
+
+.machine-guard-capability-card svg {
+  flex: 0 0 auto;
+  opacity: 0.75;
+}
+
+.machine-guard-capability-card span {
+  font-weight: 500;
+}
+
+.machine-guard-capabilities__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+/* ---------- Materials ---------- */
+
+.machine-guard-materials {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-materials__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 5rem;
+  align-items: start;
+}
+
+.machine-guard-materials h2 {
+  margin: 0.7rem 0 0;
+  font-size: clamp(2rem, 3.5vw, 3.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.machine-guard-materials h2 em {
+  font-style: normal;
+}
+
+.machine-guard-materials__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.machine-guard-materials__cards > * {
+  padding: 1.75rem;
+}
+
+.machine-guard-materials__cards h3 {
+  margin: 0 0 0.7rem;
+}
+
+.machine-guard-materials__cards p {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+/* ---------- Industries ---------- */
+
+.machine-guard-industries {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-industries__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.machine-guard-industry {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 80px;
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.machine-guard-industry svg {
+  flex: 0 0 auto;
+  opacity: 0.7;
+}
+
+.machine-guard-industry span {
+  line-height: 1.4;
+}
+
+/* ---------- Process ---------- */
+
+.machine-guard-process {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-process__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.machine-guard-process-card {
+  position: relative;
+  min-height: 240px;
+  padding: 1.5rem;
+}
+
+.machine-guard-process-card__number {
+  display: inline-flex;
+  margin-bottom: 2.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.45;
+}
+
+.machine-guard-process-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.machine-guard-process-card p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.92rem;
+  opacity: 0.68;
+}
+
+/* ---------- FAQ ---------- */
+
+.machine-guard-faq {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-faq__inner {
+  max-width: 950px;
+}
+
+.machine-guard-faq__list {
+  border-top: 1px solid rgba(128, 128, 128, 0.22);
+}
+
+.machine-guard-faq__item {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.22);
+}
+
+.machine-guard-faq__item summary {
+  position: relative;
+  padding: 1.4rem 3rem 1.4rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.machine-guard-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.machine-guard-faq__item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.machine-guard-faq__item[open] summary::after {
+  content: "−";
+}
+
+.machine-guard-faq__item p {
+  max-width: 800px;
+  margin: 0;
+  padding: 0 0 1.5rem;
+  line-height: 1.75;
+  opacity: 0.7;
+}
+
+/* ---------- Related ---------- */
+
+.machine-guard-related {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.machine-guard-related__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.machine-guard-related__grid > * {
+  padding: 2rem;
+}
+
+.machine-guard-related h3 {
+  margin: 0.7rem 0;
+  font-size: 1.35rem;
+}
+
+.machine-guard-related p {
+  margin: 0 0 1.5rem;
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+/* ---------- Final CTA ---------- */
+
+.machine-guard-final-cta {
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+}
+
+.machine-guard-final-cta__box {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  border-radius: 28px;
+  background: rgba(128, 128, 128, 0.045);
+}
+
+.machine-guard-final-cta__box h2 {
+  max-width: 850px;
+  margin: 0.75rem auto 1rem;
+  font-size: clamp(2.1rem, 4.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.machine-guard-final-cta__box h2 em {
+  font-style: normal;
+}
+
+.machine-guard-final-cta__box p {
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+  opacity: 0.72;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .machine-guard-types__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine-guard-tags {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine-guard-capabilities__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine-guard-industries__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine-guard-process__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .machine-guard-hero {
+    min-height: auto;
+    padding: 7rem 0 5rem;
+  }
+
+  .machine-guard-intro__grid,
+  .machine-guard-benefits__grid,
+  .machine-guard-materials__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .machine-guard-materials__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .machine-guard-process__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine-guard-related__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .machine-guard-hero {
+    padding: 6rem 0 4rem;
+  }
+
+  .machine-guard-hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .machine-guard-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .machine-guard-hero__trust {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .machine-guard-hero__trust span:nth-child(even) {
+    display: none;
+  }
+
+  .machine-guard-types__grid,
+  .machine-guard-tags,
+  .machine-guard-capabilities__grid,
+  .machine-guard-industries__grid,
+  .machine-guard-process__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .machine-guard-type-card {
+    min-height: auto;
+  }
+
+  .machine-guard-final-cta__box {
+    border-radius: 20px;
+    padding: 2.25rem 1.25rem;
+  }
+}

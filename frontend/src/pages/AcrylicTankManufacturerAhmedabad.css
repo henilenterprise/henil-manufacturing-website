@@ -1,0 +1,765 @@
+.acrylic-tank-page {
+  background: #fff;
+  color: #111;
+}
+
+/* =========================================
+   SHARED
+========================================= */
+
+.acrylic-tank-page .container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.acrylic-tank-page em {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.section-eyebrow,
+.acrylic-tank-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 52px;
+}
+
+.section-heading h2,
+.acrylic-tank-intro h2,
+.acrylic-tank-applications h2,
+.acrylic-tank-material h2,
+.acrylic-tank-faq h2 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+}
+
+.section-heading p,
+.acrylic-tank-intro p,
+.acrylic-tank-applications p,
+.acrylic-tank-material p,
+.acrylic-tank-faq p {
+  color: #666;
+  line-height: 1.75;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.acrylic-tank-page .btn-primary,
+.acrylic-tank-page .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 25px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.acrylic-tank-page .btn-primary {
+  background: #111;
+  color: #fff;
+}
+
+.acrylic-tank-page .btn-secondary {
+  border: 1px solid #d8d8d8;
+  color: #111;
+  background: #fff;
+}
+
+.acrylic-tank-page .btn-primary:hover,
+.acrylic-tank-page .btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.acrylic-tank-hero {
+  padding: 125px 0 85px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.06), transparent 32%),
+    #f5f5f3;
+}
+
+.acrylic-tank-hero__inner {
+  max-width: 980px;
+}
+
+.acrylic-tank-hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(48px, 8vw, 94px);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+  font-weight: 750;
+}
+
+.acrylic-tank-hero h1 em {
+  color: #777;
+}
+
+.acrylic-tank-hero__lead {
+  max-width: 780px;
+  margin: 34px 0 0;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.acrylic-tank-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.acrylic-tank-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 55px;
+}
+
+.acrylic-tank-hero__trust span {
+  padding: 9px 14px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #555;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.acrylic-tank-intro {
+  padding: 120px 0;
+}
+
+.acrylic-tank-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.acrylic-tank-intro h2 {
+  max-width: 560px;
+}
+
+.acrylic-tank-intro h2 em {
+  color: #888;
+}
+
+.acrylic-tank-intro__grid > div:last-child {
+  padding-top: 8px;
+}
+
+.acrylic-tank-intro__grid p {
+  margin: 0 0 22px;
+}
+
+/* =========================================
+   TANK TYPES
+========================================= */
+
+.acrylic-tank-types {
+  padding: 115px 0;
+  background: #f6f6f4;
+}
+
+.acrylic-tank-types__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.tank-card {
+  position: relative;
+  min-height: 235px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.tank-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+}
+
+.tank-card__number {
+  display: block;
+  margin-bottom: 45px;
+  color: #999;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tank-card h3 {
+  margin: 0 0 13px;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+}
+
+.tank-card p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   APPLICATIONS
+========================================= */
+
+.acrylic-tank-applications {
+  padding: 120px 0;
+}
+
+.acrylic-tank-applications__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.acrylic-tank-applications h2 em {
+  color: #888;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: #111;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 4px;
+}
+
+.application-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #ddd;
+}
+
+.application-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 70px;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  font-size: 14px;
+}
+
+.application-item span {
+  font-size: 18px;
+  color: #999;
+}
+
+/* =========================================
+   CAPABILITIES
+========================================= */
+
+.acrylic-tank-capabilities {
+  padding: 120px 0;
+  background: #111;
+  color: #fff;
+}
+
+.acrylic-tank-capabilities .section-eyebrow {
+  color: #aaa;
+}
+
+.acrylic-tank-capabilities .section-heading p {
+  color: #aaa;
+}
+
+.acrylic-tank-capabilities h2 {
+  color: #fff;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.capability-card {
+  min-height: 300px;
+  padding: 27px;
+  border: 1px solid #333;
+  background: #181818;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.capability-card:hover {
+  transform: translateY(-5px);
+  background: #202020;
+}
+
+.capability-card__number {
+  display: block;
+  margin-bottom: 65px;
+  color: #777;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.capability-card h3 {
+  margin: 0 0 15px;
+  font-size: 18px;
+}
+
+.capability-card p {
+  margin: 0;
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.capability-card a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================================
+   MATERIAL
+========================================= */
+
+.acrylic-tank-material {
+  padding: 120px 0;
+}
+
+.acrylic-tank-material__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 16px;
+}
+
+.material-panel {
+  padding: 55px;
+  border: 1px solid #ddd;
+}
+
+.material-panel--main {
+  background: #f5f5f3;
+}
+
+.material-panel h2 {
+  max-width: 650px;
+}
+
+.material-panel h2 em {
+  color: #888;
+}
+
+.material-panel ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 30px;
+  margin: 35px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.material-panel li {
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  color: #444;
+  font-size: 13px;
+}
+
+.material-panel--link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.material-panel--link h3 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.material-panel--link a {
+  margin-top: 20px;
+  color: #111;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================================
+   INDUSTRIES
+========================================= */
+
+.acrylic-tank-industries {
+  padding: 110px 0;
+  background: #f6f6f4;
+}
+
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.industry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px;
+  min-height: 70px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #222;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.industry-item:hover {
+  transform: translateY(-3px);
+  border-color: #999;
+}
+
+.industry-item span {
+  color: #999;
+}
+
+/* =========================================
+   PROCESS
+========================================= */
+
+.acrylic-tank-process {
+  padding: 120px 0;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.process-card {
+  min-height: 240px;
+  padding: 30px;
+  border-top: 2px solid #111;
+  background: #f6f6f4;
+}
+
+.process-card > span {
+  display: block;
+  margin-bottom: 50px;
+  color: #888;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.process-card h3 {
+  margin: 0 0 12px;
+  font-size: 19px;
+}
+
+.process-card p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   FAQ
+========================================= */
+
+.acrylic-tank-faq {
+  padding: 120px 0;
+  background: #f5f5f3;
+}
+
+.acrylic-tank-faq__grid {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.acrylic-tank-faq__grid > div:first-child p {
+  margin: 25px 0 30px;
+}
+
+.faq-list {
+  border-top: 1px solid #ccc;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 23px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary span {
+  flex: 0 0 auto;
+  color: #888;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.faq-item p {
+  max-width: 700px;
+  margin: 0;
+  padding: 0 35px 24px 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   RELATED
+========================================= */
+
+.acrylic-tank-related {
+  padding: 120px 0;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.related-card {
+  display: block;
+  min-height: 260px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  color: #111;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.related-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+}
+
+.related-card > span {
+  display: block;
+  margin-bottom: 55px;
+  color: #999;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.related-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.related-card p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.related-card strong {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+/* =========================================
+   FINAL CTA
+========================================= */
+
+.acrylic-tank-cta {
+  padding: 130px 0;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.acrylic-tank-cta .section-eyebrow {
+  color: #aaa;
+}
+
+.acrylic-tank-cta h2 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.acrylic-tank-cta h2 em {
+  color: #999;
+}
+
+.acrylic-tank-cta p {
+  max-width: 650px;
+  margin: 28px auto 35px;
+  color: #aaa;
+  line-height: 1.7;
+}
+
+.acrylic-tank-cta .btn-primary {
+  background: #fff;
+  color: #111;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .acrylic-tank-types__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .capability-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .industry-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .acrylic-tank-page .container {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .acrylic-tank-hero {
+    padding: 95px 0 65px;
+  }
+
+  .acrylic-tank-hero h1 {
+    font-size: clamp(45px, 12vw, 72px);
+  }
+
+  .acrylic-tank-intro,
+  .acrylic-tank-types,
+  .acrylic-tank-applications,
+  .acrylic-tank-capabilities,
+  .acrylic-tank-material,
+  .acrylic-tank-industries,
+  .acrylic-tank-process,
+  .acrylic-tank-faq,
+  .acrylic-tank-related {
+    padding: 85px 0;
+  }
+
+  .acrylic-tank-intro__grid,
+  .acrylic-tank-applications__grid,
+  .acrylic-tank-faq__grid,
+  .acrylic-tank-material__grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .acrylic-tank-types__grid,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .material-panel {
+    padding: 35px;
+  }
+
+  .application-list {
+    grid-template-columns: 1fr;
+  }
+
+  .industry-grid,
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .acrylic-tank-hero__actions {
+    flex-direction: column;
+  }
+
+  .acrylic-tank-page .btn-primary,
+  .acrylic-tank-page .btn-secondary {
+    width: 100%;
+  }
+
+  .acrylic-tank-hero__trust {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .capability-grid,
+  .industry-grid,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .material-panel ul {
+    grid-template-columns: 1fr;
+  }
+
+  .acrylic-tank-cta {
+    padding: 95px 0;
+  }
+}
