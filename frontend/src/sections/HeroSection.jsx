@@ -12,12 +12,12 @@ export default function HeroSection() {
         <div className="hero__copy">
           <span className="eyebrow">Ahmedabad, Gujarat · B2B Manufacturing</span>
           <h1 className="hero__title">
-            Precision Acrylic &amp; Polycarbonate <em>Fabrication.</em>
+            Acrylic &amp; Polycarbonate <em>Manufacturer in Ahmedabad.</em>
           </h1>
           <p className="hero__sub">
-            Custom-manufactured components, guards, covers and fabricated products made
-            according to your drawings and requirements — quoted for quantity, not one-off
-            retail.
+            Custom acrylic and polycarbonate components, guards, covers and fabricated
+            products manufactured to your drawings and requirements — with CNC routing,
+            laser cutting, bending and bonding for B2B quantity orders.
           </p>
           <div className="hero__actions">
             <Button href="/quote" variant="solid" size="lg" icon={ArrowRight}>
