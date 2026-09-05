@@ -21,6 +21,7 @@ const About = lazy(() => import("./pages/About.jsx"));
 const Products = lazy(() => import("./pages/Products.jsx"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail.jsx"));
 const Capabilities = lazy(() => import("./pages/Capabilities.jsx"));
+const AcrylicFabricationAhmedabad = lazy(() => import("./pages/AcrylicFabricationAhmedabad.jsx"));
 const Industries = lazy(() => import("./pages/Industries.jsx"));
 const CustomFabrication = lazy(() => import("./pages/CustomFabrication.jsx"));
 const Gallery = lazy(() => import("./pages/Gallery.jsx"));
@@ -73,6 +74,7 @@ export default function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:slug" element={<ProductDetail />} />
             <Route path="/capabilities" element={<Capabilities />} />
+            <Route path="/acrylic-fabrication-ahmedabad"element={<AcrylicFabricationAhmedabad />}/>
             <Route path="/industries" element={<Industries />} />
             <Route path="/custom-fabrication" element={<CustomFabrication />} />
             <Route path="/gallery" element={<Gallery />} />

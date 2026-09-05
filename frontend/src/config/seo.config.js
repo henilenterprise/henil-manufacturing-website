@@ -14,6 +14,12 @@
 // beyond that); descriptions sit in the ~150-160 character range.
 
 export const SEO = {
+  acrylicFabricationAhmedabad: {
+    title: "Acrylic Fabrication Ahmedabad | Custom Acrylic Manufacturer",
+    description:
+      "Henil Enterprise provides custom acrylic fabrication in Ahmedabad including CNC routing, cutting, bending, bonding, machine guards, tanks, boxes and industrial acrylic components.",
+    path: "/acrylic-fabrication-ahmedabad",
+  },
   home: {
     title: "Acrylic & Polycarbonate Manufacturer in Ahmedabad | Henil Enterprise",
     description:

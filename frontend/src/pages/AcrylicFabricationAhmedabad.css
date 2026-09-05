@@ -1,0 +1,470 @@
+.acrylic-fab-page {
+  overflow: hidden;
+}
+
+.acrylic-fab-hero {
+  padding: 150px 0 90px;
+}
+
+.acrylic-fab-hero__inner {
+  max-width: 1100px;
+}
+
+.acrylic-fab-hero__content {
+  max-width: 850px;
+}
+
+.acrylic-fab-hero h1 {
+  margin: 24px 0 20px;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  color: #111827;
+}
+
+.acrylic-fab-hero h1 em {
+  color: #16818d;
+  font-style: normal;
+}
+
+.acrylic-fab-hero__lead {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.7;
+  color: #5f6875;
+}
+
+.acrylic-fab-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.acrylic-fab-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.acrylic-fab-hero__trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  color: #687481;
+}
+
+.acrylic-fab-hero__trust svg {
+  color: #16818d;
+}
+
+
+/* Shared section heading */
+
+.acrylic-fab-section-heading {
+  max-width: 760px;
+  margin-bottom: 38px;
+}
+
+.section-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #16818d;
+}
+
+.acrylic-fab-section-heading h2,
+.acrylic-fab-intro h2,
+.acrylic-fab-why h2,
+.acrylic-fab-faq h2,
+.acrylic-fab-final h2 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #111827;
+}
+
+.acrylic-fab-section-heading p,
+.acrylic-fab-intro p,
+.acrylic-fab-why p,
+.acrylic-fab-faq p,
+.acrylic-fab-final p {
+  color: #65717e;
+  line-height: 1.75;
+}
+
+
+/* Intro */
+
+.acrylic-fab-intro {
+  padding-top: 60px;
+}
+
+.acrylic-fab-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.acrylic-fab-intro__copy {
+  max-width: 680px;
+}
+
+.acrylic-fab-intro__copy p {
+  margin: 0 0 18px;
+}
+
+
+/* Services */
+
+.acrylic-fab-services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.acrylic-fab-service {
+  padding: 26px !important;
+}
+
+.acrylic-fab-service__icon {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border-radius: 13px;
+  background: rgba(22, 129, 141, 0.09);
+  color: #16818d;
+}
+
+.acrylic-fab-service h3 {
+  margin: 0 0 9px;
+  font-size: 1.1rem;
+  color: #18212b;
+}
+
+.acrylic-fab-service p {
+  margin: 0;
+  color: #687481;
+  line-height: 1.65;
+}
+
+.acrylic-fab-service a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #16818d;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.acrylic-fab-section-cta {
+  margin-top: 28px;
+}
+
+
+/* Products */
+
+.acrylic-fab-products {
+  background: rgba(247, 250, 251, 0.55);
+}
+
+.acrylic-fab-products__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.acrylic-fab-product-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 14px 16px;
+  border: 1px solid rgba(20, 120, 130, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #1b2530;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.acrylic-fab-product-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 120, 130, 0.28);
+  box-shadow: 0 10px 26px rgba(20, 60, 70, 0.08);
+}
+
+.acrylic-fab-product-link__check {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: rgba(22, 129, 141, 0.09);
+  color: #16818d;
+}
+
+.acrylic-fab-product-link > span:nth-child(2) {
+  flex: 1;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.acrylic-fab-product-link > svg {
+  color: #89939d;
+}
+
+
+/* Why */
+
+.acrylic-fab-why__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.acrylic-fab-why__list {
+  display: grid;
+  gap: 12px;
+}
+
+.acrylic-fab-why__list div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid rgba(20, 120, 130, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.acrylic-fab-why__list svg {
+  flex: 0 0 auto;
+  color: #16818d;
+}
+
+.acrylic-fab-why__list span {
+  color: #3f4a56;
+  font-size: 0.92rem;
+}
+
+
+/* Industries */
+
+.acrylic-fab-industries {
+  background: rgba(247, 250, 251, 0.55);
+}
+
+.acrylic-fab-industries__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.acrylic-fab-industry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px;
+  border: 1px solid rgba(20, 120, 130, 0.11);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.76);
+  color: #27313c;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.acrylic-fab-industry:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 120, 130, 0.3);
+}
+
+.acrylic-fab-industry svg {
+  flex: 0 0 auto;
+  color: #16818d;
+}
+
+
+/* Process */
+
+.acrylic-fab-process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.acrylic-fab-process__card {
+  position: relative;
+  padding: 25px !important;
+}
+
+.acrylic-fab-process__number {
+  display: block;
+  margin-bottom: 22px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #16818d;
+}
+
+.acrylic-fab-process__card h3 {
+  margin: 0 0 9px;
+  font-size: 1.05rem;
+  color: #18212b;
+}
+
+.acrylic-fab-process__card p {
+  margin: 0;
+  color: #687481;
+  line-height: 1.65;
+}
+
+
+/* FAQ */
+
+.acrylic-fab-faq__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.acrylic-fab-faq__list {
+  display: grid;
+  gap: 10px;
+}
+
+.acrylic-fab-faq details {
+  border: 1px solid rgba(20, 120, 130, 0.11);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  overflow: hidden;
+}
+
+.acrylic-fab-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 19px 20px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: #202a34;
+}
+
+.acrylic-fab-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.acrylic-fab-faq summary svg {
+  flex: 0 0 auto;
+  color: #16818d;
+  transition: transform 180ms ease;
+}
+
+.acrylic-fab-faq details[open] summary svg {
+  transform: rotate(90deg);
+}
+
+.acrylic-fab-faq details p {
+  margin: 0;
+  padding: 0 20px 20px;
+  font-size: 0.88rem;
+}
+
+
+/* Final CTA */
+
+.acrylic-fab-final {
+  padding-bottom: 100px;
+}
+
+.acrylic-fab-final__card {
+  padding: 50px !important;
+  text-align: center;
+}
+
+.acrylic-fab-final__card p {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.acrylic-fab-final__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .acrylic-fab-intro__grid,
+  .acrylic-fab-why__grid,
+  .acrylic-fab-faq__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .acrylic-fab-industries__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .acrylic-fab-process__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .acrylic-fab-hero {
+    padding: 120px 0 70px;
+  }
+
+  .acrylic-fab-hero h1 {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+
+  .acrylic-fab-hero__trust {
+    display: grid;
+    gap: 10px;
+  }
+
+  .acrylic-fab-services__grid,
+  .acrylic-fab-products__grid,
+  .acrylic-fab-industries__grid,
+  .acrylic-fab-process__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acrylic-fab-final__card {
+    padding: 30px 20px !important;
+  }
+}
