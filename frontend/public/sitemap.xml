@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Henil Enterprise sitemap.
-  
+
   IMPORTANT: every <loc> below uses the production domain
   https://www.henilacrylics.com. This is a static file (the site
   is a client-rendered Vite SPA with no server-side rendering or build
@@ -37,6 +37,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+  <loc>https://www.henilacrylics.com/polycarbonate-fabrication-ahmedabad</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
   <url>
     <loc>https://www.henilacrylics.com/industries</loc>
     <changefreq>monthly</changefreq>

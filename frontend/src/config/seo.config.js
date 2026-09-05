@@ -14,12 +14,6 @@
 // beyond that); descriptions sit in the ~150-160 character range.
 
 export const SEO = {
-  acrylicFabricationAhmedabad: {
-    title: "Acrylic Fabrication Ahmedabad | Custom Acrylic Manufacturer",
-    description:
-      "Henil Enterprise provides custom acrylic fabrication in Ahmedabad including CNC routing, cutting, bending, bonding, machine guards, tanks, boxes and industrial acrylic components.",
-    path: "/acrylic-fabrication-ahmedabad",
-  },
   home: {
     title: "Acrylic & Polycarbonate Manufacturer in Ahmedabad | Henil Enterprise",
     description:
@@ -43,6 +37,18 @@ export const SEO = {
     description:
       "Acrylic and polycarbonate fabrication capabilities in Ahmedabad — CNC routing, laser cutting, precision cutting, heat bending, bonding, and full custom fabrication from your drawing.",
     path: "/capabilities",
+  },
+  acrylicFabricationAhmedabad: {
+    title: "Acrylic Fabrication Ahmedabad | Custom Acrylic Manufacturer",
+    description:
+      "Henil Enterprise provides custom acrylic fabrication in Ahmedabad including CNC routing, cutting, bending, bonding, machine guards, tanks, boxes and industrial acrylic components.",
+    path: "/acrylic-fabrication-ahmedabad",
+  },
+  polycarbonateFabricationAhmedabad: {
+    title: "Polycarbonate Fabrication Ahmedabad | Custom Manufacturer",
+    description:
+      "Henil Enterprise provides custom polycarbonate fabrication in Ahmedabad including CNC cutting, bending, machine guards, covers, impact panels and industrial components.",
+    path: "/polycarbonate-fabrication-ahmedabad",
   },
   industries: {
     title: "Industries We Serve | Industrial Acrylic Fabrication in Ahmedabad",
