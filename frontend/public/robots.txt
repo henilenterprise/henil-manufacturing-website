@@ -1,6 +1,4 @@
-# Henil Enterprise — https://www.henilenterprise.com (placeholder domain;
-# update this file and sitemap.xml once the real production domain is
-# confirmed — see the note at the top of sitemap.xml).
+# Henil Enterprise — https://www.henilacrylics.com
 
 User-agent: *
 Allow: /
