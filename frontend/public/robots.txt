@@ -6,4 +6,4 @@ User-agent: *
 Allow: /
 Disallow: /design-system
 
-Sitemap: https://www.henilenterprise.com/sitemap.xml
+Sitemap: https://www.henilacrylics.com/sitemap.xml
