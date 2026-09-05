@@ -27,7 +27,6 @@ const AcrylicMachineGuardManufacturerAhmedabad = lazy(() => import("./pages/Acry
 const AcrylicTankManufacturerAhmedabad = lazy(
   () => import("./pages/AcrylicTankManufacturerAhmedabad.jsx")
 );
-
 const CustomAcrylicFabricationAhmedabad = lazy(
   () => import("./pages/CustomAcrylicFabricationAhmedabad.jsx")
 );
