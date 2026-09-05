@@ -76,7 +76,7 @@ export default function App() {
             <Route path="/products/:slug" element={<ProductDetail />} />
             <Route path="/capabilities" element={<Capabilities />} />
             <Route path="/acrylic-fabrication-ahmedabad"element={<AcrylicFabricationAhmedabad />}/>
-            <Route path="/acrylic-fabrication-ahmedabad"element={<AcrylicFabricationAhmedabad />}/>
+            <Route path="/polycarbonate-fabrication-ahmedabad"element={<PolycarbonateFabricationAhmedabad />}/>
             <Route path="/industries" element={<Industries />} />
             <Route path="/custom-fabrication" element={<CustomFabrication />} />
             <Route path="/gallery" element={<Gallery />} />
