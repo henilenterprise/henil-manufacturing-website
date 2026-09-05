@@ -26,12 +26,12 @@ export const SEO = {
       "Henil Enterprise is an Ahmedabad-based acrylic and polycarbonate fabricator working business-to-business — components built to your drawing, dimensions, sample, or specification.",
     path: "/about",
   },
- products: {
-  title: "Acrylic & Polycarbonate Products Manufacturer Ahmedabad | Henil Enterprise",
-  description:
-    "Explore custom acrylic and polycarbonate products from Henil Enterprise, Ahmedabad — machine guards, covers, boxes, components and fabricated parts made to your drawing.",
-  path: "/products",
-},
+  products: {
+    title: "Acrylic & Polycarbonate Products Manufacturer Ahmedabad | Henil Enterprise",
+    description:
+      "Explore custom acrylic and polycarbonate products from Henil Enterprise, Ahmedabad — machine guards, covers, boxes, components and fabricated parts made to your drawing.",
+    path: "/products",
+  },
   capabilities: {
     title: "CNC Routing, Laser Cutting, Bending & Bonding | Ahmedabad Fabrication",
     description:
@@ -87,96 +87,116 @@ export const SEO = {
 // repeating the same keywords across every product page.
 
 export function buildProductSeo(product, category) {
-  const seoByCategory = {
-    "industrial-acrylic-components": {
+  const productSeo = {
+    "acrylic-machine-panel": {
+      title: "Acrylic Machine Panel Manufacturer Ahmedabad",
+      description:
+        "Custom acrylic machine panels fabricated in Ahmedabad for machine housings, control panels and industrial equipment according to your drawings.",
+    },
+
+    "acrylic-structural-component": {
       title: "Industrial Acrylic Components Manufacturer Ahmedabad",
       description:
-        "Custom industrial acrylic components manufactured in Ahmedabad by Henil Enterprise for machinery, equipment and engineering applications.",
+        "Custom industrial acrylic structural components fabricated in Ahmedabad for machinery, equipment and engineering applications.",
     },
 
-    "polycarbonate-components": {
-      title: "Polycarbonate Components Manufacturer Ahmedabad",
+    "polycarbonate-impact-panel": {
+      title: "Polycarbonate Impact Panel Manufacturer Ahmedabad",
       description:
-        "Custom polycarbonate components manufactured in Ahmedabad by Henil Enterprise for industrial, protective and engineering applications.",
+        "Custom polycarbonate impact panels fabricated in Ahmedabad for machinery, equipment protection and industrial applications.",
     },
 
-    "machine-guards": {
-      title:
-        product.materials?.length === 1
-          ? `${product.materials[0]} Machine Guard Manufacturer Ahmedabad`
-          : "Acrylic & Polycarbonate Machine Guards Ahmedabad",
+    "polycarbonate-structural-part": {
+      title: "Polycarbonate Structural Parts Manufacturer Ahmedabad",
       description:
-        "Custom machine guards fabricated from acrylic and polycarbonate in Ahmedabad for CNC machines, conveyors and industrial equipment.",
+        "Custom polycarbonate structural parts manufactured in Ahmedabad for machinery, equipment and engineering applications.",
     },
 
-    "protective-covers": {
-      title: "Acrylic & Polycarbonate Protective Covers Ahmedabad",
+    "cnc-machine-guard": {
+      title: "CNC Machine Guard Manufacturer Ahmedabad",
       description:
-        "Custom acrylic and polycarbonate protective covers manufactured in Ahmedabad for control panels, equipment and industrial applications.",
+        "Custom CNC machine guards fabricated from acrylic and polycarbonate in Ahmedabad for industrial machinery and equipment protection.",
     },
 
-    "acrylic-tanks": {
+    "conveyor-guard-panel": {
+      title: "Conveyor Guard Panel Manufacturer Ahmedabad",
+      description:
+        "Custom conveyor guard panels fabricated from acrylic and polycarbonate in Ahmedabad for industrial conveyor and machinery protection.",
+    },
+
+    "equipment-protective-cover": {
+      title: "Equipment Protective Cover Manufacturer Ahmedabad",
+      description:
+        "Custom acrylic and polycarbonate equipment covers manufactured in Ahmedabad for industrial machinery, equipment protection and visibility.",
+    },
+
+    "control-panel-cover": {
+      title: "Acrylic Control Panel Cover Manufacturer Ahmedabad",
+      description:
+        "Custom acrylic control panel covers fabricated in Ahmedabad for industrial machines, electrical panels and equipment protection.",
+    },
+
+    "custom-acrylic-tank": {
       title: "Custom Acrylic Tank Manufacturer Ahmedabad",
       description:
-        "Custom acrylic tanks fabricated in Ahmedabad by Henil Enterprise to your capacity, configuration and drawing requirements.",
+        "Custom acrylic tanks fabricated in Ahmedabad according to your capacity, dimensions and drawing requirements for industrial applications.",
     },
 
-    "acrylic-boxes": {
-      title: "Custom Acrylic Boxes Manufacturer Ahmedabad",
+    "acrylic-storage-box": {
+      title: "Custom Acrylic Storage Box Manufacturer Ahmedabad",
       description:
-        "Custom clear acrylic boxes manufactured in Ahmedabad for storage, display and industrial applications according to your requirements.",
+        "Custom clear acrylic storage boxes manufactured in Ahmedabad for industrial, commercial, storage and display applications.",
     },
 
-    "acrylic-cabinets": {
-      title: "Acrylic Display Cabinets Manufacturer Ahmedabad",
+    "acrylic-display-cabinet": {
+      title: "Acrylic Display Cabinet Manufacturer Ahmedabad",
       description:
-        "Custom acrylic display cabinets manufactured in Ahmedabad for retail, showroom and light storage applications.",
+        "Custom acrylic display cabinets manufactured in Ahmedabad for retail stores, showrooms, exhibitions and commercial applications.",
     },
 
-    "inspection-windows": {
-      title: "Acrylic & Polycarbonate Inspection Windows Ahmedabad",
+    "machine-inspection-window": {
+      title: "Machine Inspection Window Manufacturer Ahmedabad",
       description:
-        "Custom acrylic and polycarbonate inspection windows fabricated in Ahmedabad for machine housings and process monitoring applications.",
+        "Custom acrylic and polycarbonate machine inspection windows fabricated in Ahmedabad for equipment monitoring and industrial applications.",
     },
 
-    "sight-glasses": {
+    "process-sight-glass": {
       title: "Acrylic Sight Glass Manufacturer Ahmedabad",
       description:
-        "Custom acrylic sight glass components fabricated in Ahmedabad for visual monitoring of tanks, equipment and enclosed processes.",
+        "Custom acrylic sight glass components fabricated in Ahmedabad for visual monitoring of tanks, equipment and enclosed industrial processes.",
     },
 
-    "transparent-enclosures": {
-      title: "Acrylic & Polycarbonate Enclosures Ahmedabad",
+    "transparent-equipment-enclosure": {
+      title: "Transparent Equipment Enclosure Manufacturer Ahmedabad",
       description:
-        "Custom transparent acrylic and polycarbonate equipment enclosures manufactured in Ahmedabad for visibility and equipment protection.",
+        "Custom transparent acrylic and polycarbonate equipment enclosures manufactured in Ahmedabad for visibility, protection and industrial applications.",
     },
 
-    "custom-fabricated-components": {
-      title: "Custom Acrylic & Polycarbonate Components Ahmedabad",
+    "custom-fabricated-part": {
+      title: "Custom Acrylic & Polycarbonate Parts Ahmedabad",
       description:
-        "Custom acrylic and polycarbonate components fabricated in Ahmedabad from your drawing, sample or specification for industrial applications.",
+        "Custom acrylic and polycarbonate parts fabricated in Ahmedabad from your drawing, sample or specification for industrial applications.",
     },
 
-    "display-commercial-products": {
-      title: "Acrylic Display Products Manufacturer Ahmedabad",
+    "commercial-display-fixture": {
+      title: "Acrylic Display Fixture Manufacturer Ahmedabad",
       description:
-        "Custom acrylic display and point-of-sale products manufactured in Ahmedabad for retail, commercial spaces and showrooms.",
+        "Custom acrylic display fixtures manufactured in Ahmedabad for retail stores, showrooms, exhibitions and commercial spaces.",
     },
   };
 
-  const categorySeo = seoByCategory[product.categoryId];
+  const seo = productSeo[product.id];
 
-  if (categorySeo) {
+  if (seo) {
     return {
-      title: categorySeo.title,
-      description: categorySeo.description,
+      title: seo.title,
+      description: seo.description,
       path: `/products/${product.id}`,
     };
   }
 
-  // Safe fallback for any future category added to the catalogue.
   return {
-    title: `${product.name} | ${category?.label || "Custom Fabrication"} — Ahmedabad`,
+    title: `${product.name} | Henil Enterprise Ahmedabad`,
     description:
       `${product.shortDescription} Fabricated in Ahmedabad, Gujarat by Henil Enterprise for businesses across India — request a quote for your quantity.`.slice(
         0,
@@ -185,6 +205,7 @@ export function buildProductSeo(product, category) {
     path: `/products/${product.id}`,
   };
 }
+
 
 export function buildBlogPostSeo(post) {
   return {
