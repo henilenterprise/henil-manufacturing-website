@@ -38,3 +38,22 @@ export async function getBlogPostBySlug(slug) {
 export async function getRelatedBlogPosts(currentPost, limit = 3) {
   return getRelatedPostsFrom(currentPost, BLOG_POSTS, limit);
 }
+
+
+// Synchronous read helpers used by the Vite prerender step and by the
+// initial render of blog pages. The existing async helpers stay unchanged
+// so the browser data flow remains compatible with a future Supabase read layer.
+export function getPublishedBlogPostsSync() {
+  return BLOG_POSTS.filter((p) => p.published).sort(
+    (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+  );
+}
+
+export function getBlogPostBySlugSync(slug) {
+  const post = BLOG_POSTS.find((p) => p.slug === slug && p.published);
+  return post || null;
+}
+
+export function getRelatedBlogPostsSync(currentPost, limit = 3) {
+  return getRelatedPostsFrom(currentPost, BLOG_POSTS, limit);
+}

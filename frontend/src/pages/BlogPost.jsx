@@ -6,7 +6,12 @@ import BlogVisual from "../components/BlogVisual.jsx";
 import BlogCard from "../components/BlogCard.jsx";
 import Button from "../components/ui/Button.jsx";
 import { Spinner } from "../components/ui/index.js";
-import { getBlogPostBySlug, getRelatedBlogPosts } from "../services/blogService.js";
+import {
+  getBlogPostBySlug,
+  getRelatedBlogPosts,
+  getBlogPostBySlugSync,
+  getRelatedBlogPostsSync,
+} from "../services/blogService.js";
 import { calculateReadingTime, formatPublishedDate, buildBlogPostingStructuredData } from "../utils/blog.js";
 import { useJsonLd } from "../hooks/useJsonLd.js";
 import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
@@ -17,14 +22,14 @@ import "./BlogPost.css";
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const [post, setPost] = useState(undefined); // undefined = loading, null = not found
-  const [related, setRelated] = useState([]);
+  const [post, setPost] = useState(() => getBlogPostBySlugSync(slug));
+  const [related, setRelated] = useState(() => {
+    const initialPost = getBlogPostBySlugSync(slug);
+    return initialPost ? getRelatedBlogPostsSync(initialPost, 3) : [];
+  });
 
   useEffect(() => {
     let cancelled = false;
-    setPost(undefined);
-    setRelated([]);
-
     getBlogPostBySlug(slug).then(async (data) => {
       if (cancelled) return;
       setPost(data);

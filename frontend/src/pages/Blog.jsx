@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MainLayout from "../layouts/MainLayout.jsx";
 import BlogCard from "../components/BlogCard.jsx";
 import { Spinner } from "../components/ui/index.js";
-import { getPublishedBlogPosts } from "../services/blogService.js";
+import { getPublishedBlogPosts, getPublishedBlogPostsSync } from "../services/blogService.js";
 import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import { useMetaDescription } from "../hooks/useMetaDescription.js";
 import { useCanonical } from "../hooks/useCanonical.js";
@@ -11,7 +11,7 @@ import { buildBreadcrumbStructuredData } from "../utils/structuredData.js";
 import "./Blog.css";
 
 export default function Blog() {
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState(() => getPublishedBlogPostsSync());
 
   useEffect(() => {
     let cancelled = false;

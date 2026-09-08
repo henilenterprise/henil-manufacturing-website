@@ -4,10 +4,15 @@ import { StaticRouter } from "react-router-dom/server";
 import { Routes, Route } from "react-router-dom";
 
 import ProductDetail from "./pages/ProductDetail.jsx";
+import Blog from "./pages/Blog.jsx";
+import BlogPost from "./pages/BlogPost.jsx";
 
 import { PRODUCTS } from "./data/products.data.js";
 import { buildProductSeo } from "./config/seo.config.js";
 import { getCategoryById } from "./data/categories.data.js";
+import { BLOG_POSTS } from "./data/blogPosts.data.js";
+import { buildBlogPostSeo } from "./config/seo.config.js";
+import { buildBlogPostingStructuredData } from "./utils/blog.js";
 
 const SITE_URL = "https://www.henilacrylics.com";
 
@@ -21,90 +26,157 @@ function normalizePath(url) {
   }
 }
 
-function buildHead(product) {
-  const category = getCategoryById(product.categoryId);
-  const seo = buildProductSeo(product, category);
-  const canonical = `${SITE_URL}${seo.path}`;
+function buildMetaHead({ title, description, canonical, structuredData = null }) {
+  const elements = new Set([
+    {
+      type: "meta",
+      props: {
+        name: "description",
+        content: description,
+      },
+    },
+    {
+      type: "link",
+      props: {
+        rel: "canonical",
+        href: canonical,
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        property: "og:title",
+        content: title,
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        property: "og:description",
+        content: description,
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        property: "og:type",
+        content: "website",
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        property: "og:url",
+        content: canonical,
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        name: "twitter:title",
+        content: title,
+      },
+    },
+    {
+      type: "meta",
+      props: {
+        name: "twitter:description",
+        content: description,
+      },
+    },
+  ]);
+
+  if (structuredData) {
+    elements.add({
+      type: "script",
+      props: { type: "application/ld+json" },
+      children: JSON.stringify(structuredData),
+    });
+  }
 
   return {
     lang: "en",
-    title: seo.title,
-
-    elements: new Set([
-      {
-        type: "meta",
-        props: {
-          name: "description",
-          content: seo.description,
-        },
-      },
-      {
-        type: "link",
-        props: {
-          rel: "canonical",
-          href: canonical,
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          property: "og:title",
-          content: seo.title,
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          property: "og:description",
-          content: seo.description,
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          property: "og:type",
-          content: "website",
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          property: "og:url",
-          content: canonical,
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          name: "twitter:card",
-          content: "summary_large_image",
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          name: "twitter:title",
-          content: seo.title,
-        },
-      },
-      {
-        type: "meta",
-        props: {
-          name: "twitter:description",
-          content: seo.description,
-        },
-      },
-    ]),
+    title,
+    elements,
   };
+}
+
+function buildProductHead(product) {
+  const category = getCategoryById(product.categoryId);
+  const seo = buildProductSeo(product, category);
+  return buildMetaHead({
+    title: seo.title,
+    description: seo.description,
+    canonical: `${SITE_URL}${seo.path}`,
+  });
+}
+
+function buildBlogHead() {
+  return buildMetaHead({
+    title: "Blog | Acrylic & Polycarbonate Fabrication Insights — Henil Enterprise",
+    description:
+      "Notes on acrylic and polycarbonate fabrication — materials, processes, and applications — from Henil Enterprise, an Ahmedabad-based manufacturer and fabricator.",
+    canonical: `${SITE_URL}/blog`,
+  });
+}
+
+function buildBlogPostHead(post) {
+  const seo = buildBlogPostSeo(post);
+  return buildMetaHead({
+    title: seo.title,
+    description: seo.description,
+    canonical: `${SITE_URL}${seo.path}`,
+    structuredData: buildBlogPostingStructuredData(post),
+  });
 }
 
 export async function prerender(data) {
   const path = normalizePath(data?.url);
 
-  /*
-   * Only prerender product-detail routes.
-   * Other routes continue using the normal SPA entry.
-   */
+  if (path === "/blog") {
+    const html = renderToString(
+      <StaticRouter location={path}>
+        <Routes>
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </StaticRouter>
+    );
+
+    return {
+      html,
+      head: buildBlogHead(),
+    };
+  }
+
+  if (path.startsWith("/blog/")) {
+    const slug = path
+      .replace(/^\/blog\//, "")
+      .replace(/\/$/, "");
+    const post = BLOG_POSTS.find((item) => item.slug === slug && item.published);
+
+    if (!post) return null;
+
+    const html = renderToString(
+      <StaticRouter location={path}>
+        <Routes>
+          <Route path="/blog/:slug" element={<BlogPost />} />
+        </Routes>
+      </StaticRouter>
+    );
+
+    return {
+      html,
+      head: buildBlogPostHead(post),
+    };
+  }
+
   if (!path.startsWith("/products/")) {
     return null;
   }
@@ -119,12 +191,6 @@ export async function prerender(data) {
     return null;
   }
 
-  /*
-   * IMPORTANT:
-   *
-   * ProductDetail uses useParams(), so it MUST be rendered
-   * through the same route pattern used by the real application.
-   */
   const html = renderToString(
     <StaticRouter location={path}>
       <Routes>
@@ -138,6 +204,7 @@ export async function prerender(data) {
 
   return {
     html,
-    head: buildHead(product),
+    head: buildProductHead(product),
   };
 }
+

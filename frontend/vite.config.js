@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { vitePrerenderPlugin } from "vite-prerender-plugin";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { BLOG_POSTS } from "./src/data/blogPosts.data.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,6 +27,13 @@ const PRODUCT_ROUTES = [
   "/products/commercial-display-fixture",
 ];
 
+const BLOG_ROUTES = [
+  "/blog",
+  ...BLOG_POSTS
+    .filter((post) => post.published)
+    .map((post) => `/blog/${post.slug}`),
+];
+
 export default defineConfig({
   plugins: [
     react(),
@@ -38,7 +46,7 @@ export default defineConfig({
         "src/prerender.jsx"
       ),
 
-      additionalPrerenderRoutes: PRODUCT_ROUTES,
+      additionalPrerenderRoutes: [...PRODUCT_ROUTES, ...BLOG_ROUTES],
     }),
   ],
 
