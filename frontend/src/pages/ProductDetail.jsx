@@ -16,7 +16,6 @@ import { useJsonLd } from "../hooks/useJsonLd.js";
 import { buildProductSeo } from "../config/seo.config.js";
 import {
   buildBreadcrumbStructuredData,
-  buildProductStructuredData,
 } from "../utils/structuredData.js";
 import "./ProductDetail.css";
 
@@ -168,7 +167,6 @@ export default function ProductDetail() {
       : null
   );
 
-  useJsonLd(product ? buildProductStructuredData(product, category) : null);
 
   if (!product) {
     return (
