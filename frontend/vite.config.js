@@ -27,6 +27,20 @@ const PRODUCT_ROUTES = [
   "/products/commercial-display-fixture",
 ];
 
+const SEO_ROUTES = [
+  "/acrylic-fabrication-ahmedabad",
+  "/custom-acrylic-fabrication-ahmedabad",
+  "/polycarbonate-fabrication-ahmedabad",
+  "/acrylic-machine-guard-manufacturer-ahmedabad",
+  "/polycarbonate-machine-guard-manufacturer-ahmedabad",
+  "/acrylic-tank-manufacturer-ahmedabad",
+  "/acrylic-box-manufacturer-ahmedabad",
+  "/acrylic-sight-glass-manufacturer-ahmedabad",
+  "/acrylic-inspection-window-manufacturer-ahmedabad",
+  "/acrylic-cnc-cutting-ahmedabad",
+  "/acrylic-bending-ahmedabad",
+];
+
 const BLOG_ROUTES = [
   "/blog",
   ...BLOG_POSTS
@@ -46,7 +60,11 @@ export default defineConfig({
         "src/prerender.jsx"
       ),
 
-      additionalPrerenderRoutes: [...PRODUCT_ROUTES, ...BLOG_ROUTES],
+      additionalPrerenderRoutes: [
+        ...PRODUCT_ROUTES,
+        ...SEO_ROUTES,
+        ...BLOG_ROUTES,
+      ],
     }),
   ],
 

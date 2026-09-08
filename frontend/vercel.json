@@ -3,10 +3,6 @@
     {
       "source": "/api/:path*",
       "destination": "https://henil-manufacturing-website.onrender.com/api/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }
