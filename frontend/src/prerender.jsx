@@ -4,6 +4,7 @@ import { StaticRouter } from "react-router-dom/server";
 import { Routes, Route } from "react-router-dom";
 
 import ProductDetail from "./pages/ProductDetail.jsx";
+import Products from "./pages/Products.jsx";
 import Blog from "./pages/Blog.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
 
@@ -131,6 +132,12 @@ function buildMetaHead({
   };
 }
 
+/*
+ * ---------------------------------------------------------
+ * PRODUCT SEO
+ * ---------------------------------------------------------
+ */
+
 function buildProductHead(product) {
   const category = getCategoryById(product.categoryId);
   const seo = buildProductSeo(product, category);
@@ -142,14 +149,18 @@ function buildProductHead(product) {
   });
 }
 
+/*
+ * ---------------------------------------------------------
+ * BLOG SEO
+ * ---------------------------------------------------------
+ */
+
 function buildBlogHead() {
   return buildMetaHead({
     title:
       "Blog | Acrylic & Polycarbonate Fabrication Insights — Henil Enterprise",
-
     description:
       "Notes on acrylic and polycarbonate fabrication — materials, processes, and applications — from Henil Enterprise, an Ahmedabad-based manufacturer and fabricator.",
-
     canonical: `${SITE_URL}/blog`,
   });
 }
@@ -166,8 +177,11 @@ function buildBlogPostHead(post) {
 }
 
 /*
- * Commercial / SEO pages
+ * ---------------------------------------------------------
+ * COMMERCIAL / SEO PAGES
+ * ---------------------------------------------------------
  */
+
 const SEO_PAGES = {
   "/acrylic-fabrication-ahmedabad": {
     component: AcrylicFabricationAhmedabad,
@@ -276,19 +290,57 @@ function renderSeoPage(path, page) {
   };
 }
 
+/*
+ * ---------------------------------------------------------
+ * PRERENDER
+ * ---------------------------------------------------------
+ */
+
 export async function prerender(data) {
   const path = normalizePath(data?.url);
 
   /*
-   * Commercial / SEO pages
+   * -------------------------------------------------------
+   * PRODUCTS INDEX
+   * -------------------------------------------------------
    */
+
+  if (path === "/products") {
+    const html = renderToString(
+      <StaticRouter location={path}>
+        <Routes>
+          <Route path="/products" element={<Products />} />
+        </Routes>
+      </StaticRouter>
+    );
+
+    return {
+      html,
+      head: buildMetaHead({
+        title: "Acrylic & Polycarbonate Products | Henil Enterprise",
+        description:
+          "Explore custom acrylic and polycarbonate products manufactured by Henil Enterprise in Ahmedabad for industrial, machinery and commercial applications.",
+        canonical: `${SITE_URL}/products`,
+      }),
+    };
+  }
+
+  /*
+   * -------------------------------------------------------
+   * COMMERCIAL / SEO PAGES
+   * -------------------------------------------------------
+   */
+
   if (SEO_PAGES[path]) {
     return renderSeoPage(path, SEO_PAGES[path]);
   }
 
   /*
-   * Blog index
+   * -------------------------------------------------------
+   * BLOG INDEX
+   * -------------------------------------------------------
    */
+
   if (path === "/blog") {
     const html = renderToString(
       <StaticRouter location={path}>
@@ -305,8 +357,11 @@ export async function prerender(data) {
   }
 
   /*
-   * Individual blog posts
+   * -------------------------------------------------------
+   * INDIVIDUAL BLOG POSTS
+   * -------------------------------------------------------
    */
+
   if (path.startsWith("/blog/")) {
     const slug = path
       .replace(/^\/blog\//, "")
@@ -338,8 +393,11 @@ export async function prerender(data) {
   }
 
   /*
-   * Individual products
+   * -------------------------------------------------------
+   * INDIVIDUAL PRODUCTS
+   * -------------------------------------------------------
    */
+
   if (path.startsWith("/products/")) {
     const slug = path
       .replace(/^\/products\//, "")
@@ -371,8 +429,12 @@ export async function prerender(data) {
   }
 
   /*
-   * Let the normal Vite/Vercel application handle
-   * all other routes.
+   * -------------------------------------------------------
+   * ALL OTHER ROUTES
+   * -------------------------------------------------------
+   *
+   * Normal Vite/Vercel application handles these routes.
    */
+
   return null;
 }

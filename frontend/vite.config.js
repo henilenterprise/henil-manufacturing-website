@@ -48,6 +48,23 @@ const BLOG_ROUTES = [
     .map((post) => `/blog/${post.slug}`),
 ];
 
+// Core static pages. "/" is prerendered automatically as the plugin's
+// entry route and doesn't need to be listed here, but everything below
+// previously had no static HTML at all — see src/prerender.jsx's
+// STATIC_PAGES map, which is what actually renders each of these.
+const STATIC_ROUTES = [
+  "/about",
+  "/capabilities",
+  "/industries",
+  "/custom-fabrication",
+  "/gallery",
+  "/contact",
+  "/faq",
+  "/quote",
+  "/brochure",
+  "/products",
+];
+
 export default defineConfig({
   plugins: [
     react(),
@@ -61,6 +78,7 @@ export default defineConfig({
       ),
 
       additionalPrerenderRoutes: [
+        ...STATIC_ROUTES,
         ...PRODUCT_ROUTES,
         ...SEO_ROUTES,
         ...BLOG_ROUTES,

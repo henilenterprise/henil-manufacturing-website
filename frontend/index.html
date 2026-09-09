@@ -4,10 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acrylic & Polycarbonate Manufacturer in Ahmedabad | Henil Enterprise</title>
-    <meta name="description" content="Henil Enterprise is a B2B acrylic and polycarbonate manufacturer and fabricator based in Ahmedabad, Gujarat, building custom components to your drawing for businesses across India." />
+    <!--
+      No static <meta name="description"> here on purpose. Every route
+      that gets prerendered (see src/prerender.jsx) injects its own
+      page-specific description into <head>; a second, generic one
+      hardcoded here would sit alongside it as a duplicate description
+      tag, and search engines only ever honor one. The one true
+      fallback source for a route that somehow isn't prerendered is the
+      client-side useMetaDescription hook (see hooks/useMetaDescription.js),
+      which every page already calls via useSeo.
+    -->
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:site_name" content="Henil Enterprise" />
-    <meta property="og:type" content="website" />
+    <!--
+      og:type intentionally omitted here too, same reasoning as the
+      description above: every prerendered route's head already sets
+      it (always "website" — see buildMetaHead in src/prerender.jsx),
+      and the client-side useSeo hook sets it for any route that isn't
+      prerendered. A static copy here would just be a second identical
+      tag, not a conflicting one, but there's no reason to duplicate it.
+    -->
+
 
     <!--
       Google Search Console domain-verification meta tag. Vite replaces
