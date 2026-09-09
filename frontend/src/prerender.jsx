@@ -2,7 +2,18 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { Routes, Route } from "react-router-dom";
+import { ToastProvider } from "./components/ui/index.js";
 
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Capabilities from "./pages/Capabilities.jsx";
+import Industries from "./pages/Industries.jsx";
+import CustomFabrication from "./pages/CustomFabrication.jsx";
+import Gallery from "./pages/Gallery.jsx";
+import Contact from "./pages/Contact.jsx";
+import Faq from "./pages/Faq.jsx";
+import Quote from "./pages/Quote.jsx";
+import Brochure from "./pages/Brochure.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import Products from "./pages/Products.jsx";
 import Blog from "./pages/Blog.jsx";
@@ -23,15 +34,34 @@ import AcrylicBendingAhmedabad from "./pages/AcrylicBendingAhmedabad.jsx";
 import { PRODUCTS } from "./data/products.data.js";
 import { BLOG_POSTS } from "./data/blogPosts.data.js";
 import { getCategoryById } from "./data/categories.data.js";
+import { FAQ_ITEMS } from "./data/faq.data.js";
 
 import {
+  SEO,
   buildProductSeo,
   buildBlogPostSeo,
 } from "./config/seo.config.js";
 
 import { buildBlogPostingStructuredData } from "./utils/blog.js";
+import { buildFaqStructuredData } from "./utils/faq.js";
+import {
+  buildOrganizationStructuredData,
+  buildLocalBusinessStructuredData,
+  buildBreadcrumbStructuredData,
+  buildProductStructuredData,
+} from "./utils/structuredData.js";
 
 const SITE_URL = "https://www.henilacrylics.com";
+
+// Organization describes the business entity itself and doesn't change
+// per page — it's mounted sitewide client-side in App.jsx (see the
+// comment there). prerender.jsx renders each page's component directly
+// through its own <StaticRouter> rather than through <App>, so that
+// sitewide mount is never reached during prerendering; every prerendered
+// route below includes this explicitly so the *static* HTML carries the
+// same entity-level structured data Google would eventually see after
+// JS runs, not just a client-side-only version of it.
+const ORGANIZATION_STRUCTURED_DATA = buildOrganizationStructuredData();
 
 function normalizePath(url) {
   if (!url) return "/";
@@ -43,11 +73,17 @@ function normalizePath(url) {
   }
 }
 
+// `structuredDataList` replaces the old single `structuredData` field —
+// a page can legitimately need more than one JSON-LD block (e.g. a
+// product page wants Organization + Product + BreadcrumbList all at
+// once). Falsy entries are skipped so callers can pass a conditional
+// value (e.g. `product ? buildProductStructuredData(...) : null`)
+// without an extra filter step at every call site.
 function buildMetaHead({
   title,
   description,
   canonical,
-  structuredData = null,
+  structuredDataList = [],
 }) {
   const elements = [
     {
@@ -115,13 +151,14 @@ function buildMetaHead({
     },
   ];
 
-  if (structuredData) {
+  for (const data of structuredDataList) {
+    if (!data) continue;
     elements.push({
       type: "script",
       props: {
         type: "application/ld+json",
       },
-      children: JSON.stringify(structuredData),
+      children: JSON.stringify(data),
     });
   }
 
@@ -132,20 +169,200 @@ function buildMetaHead({
   };
 }
 
+function renderRoute(path, Component) {
+  return renderRouteAt(path, path, Component);
+}
+
+// For dynamic routes, `location` is the real URL being prerendered
+// (e.g. "/products/acrylic-storage-box") while `pattern` is the Route's
+// matcher (e.g. "/products/:slug") — they must stay distinct so
+// useParams() inside Component actually resolves the slug. Static
+// pages pass the same value for both via renderRoute() above.
+function renderRouteAt(location, pattern, Component) {
+  // ToastProvider wraps every route (matching App.jsx's real provider
+  // tree) because Quote.jsx calls useToast() — without this, prerendering
+  // that one page throws "useToast must be used within a ToastProvider".
+  // Harmless no-op for every other page that doesn't use toasts.
+  return renderToString(
+    <StaticRouter location={location}>
+      <ToastProvider>
+        <Routes>
+          <Route path={pattern} element={<Component />} />
+        </Routes>
+      </ToastProvider>
+    </StaticRouter>
+  );
+}
+
+/*
+ * ---------------------------------------------------------
+ * HOME
+ * ---------------------------------------------------------
+ */
+
+function renderHome() {
+  return {
+    html: renderRoute("/", Home),
+    head: buildMetaHead({
+      title: SEO.home.title,
+      description: SEO.home.description,
+      canonical: `${SITE_URL}${SEO.home.path}`,
+      // Matches Home.jsx's client-side mounts exactly: Organization
+      // (sitewide) + LocalBusiness (Home and Contact only — see
+      // structuredData.js). No breadcrumb: Home is the top level, and
+      // Home.jsx itself never mounts one either.
+      structuredDataList: [
+        ORGANIZATION_STRUCTURED_DATA,
+        buildLocalBusinessStructuredData(),
+      ],
+    }),
+  };
+}
+
+/*
+ * ---------------------------------------------------------
+ * SIMPLE STATIC PAGES
+ * ---------------------------------------------------------
+ * Every entry's `seo` and `breadcrumb` mirror exactly what that page's
+ * own component already passes to useSeo()/useJsonLd() client-side —
+ * see each file's imports of SEO.<page> and buildBreadcrumbStructuredData
+ * for the source of truth this is kept in sync with.
+ */
+
+const STATIC_PAGES = {
+  "/about": {
+    component: About,
+    seo: SEO.about,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "About", path: "/about" },
+    ],
+  },
+  "/capabilities": {
+    component: Capabilities,
+    seo: SEO.capabilities,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Capabilities", path: "/capabilities" },
+    ],
+  },
+  "/industries": {
+    component: Industries,
+    seo: SEO.industries,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Industries", path: "/industries" },
+    ],
+  },
+  "/gallery": {
+    component: Gallery,
+    seo: SEO.gallery,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Gallery", path: "/gallery" },
+    ],
+  },
+  "/custom-fabrication": {
+    component: CustomFabrication,
+    // Not in seo.config.js's SEO object today — CustomFabrication.jsx
+    // passes this title/description inline to useSeo() rather than
+    // through the shared config. Copied verbatim from there rather
+    // than invented, so static and client-rendered output agree.
+    seo: {
+      title: "Custom Acrylic & Polycarbonate Fabrication | Ahmedabad",
+      description:
+        "Custom acrylic products fabricated from your drawing, dimensions, sample or CAD file — cutting, bending and bonding combined into one finished part, from our Ahmedabad facility.",
+      path: "/custom-fabrication",
+    },
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Custom Fabrication", path: "/custom-fabrication" },
+    ],
+  },
+  "/contact": {
+    component: Contact,
+    seo: SEO.contact,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Contact", path: "/contact" },
+    ],
+    // Contact.jsx mounts LocalBusiness client-side too (Home and
+    // Contact only — see structuredData.js's comment on why).
+    extraStructuredData: [buildLocalBusinessStructuredData()],
+  },
+  "/faq": {
+    component: Faq,
+    seo: SEO.faq,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "FAQ", path: "/faq" },
+    ],
+    // Generated from the same FAQ_ITEMS array the visible accordion
+    // renders (see Faq.jsx) — this schema can't drift from what's
+    // actually on the page because it's built from the same data.
+    extraStructuredData: [buildFaqStructuredData(FAQ_ITEMS)],
+  },
+  "/quote": {
+    component: Quote,
+    seo: SEO.quote,
+    // No breadcrumb: Quote.jsx doesn't mount one client-side either.
+  },
+  "/brochure": {
+    component: Brochure,
+    seo: SEO.brochure,
+  },
+};
+
+function renderStaticPage(path, page) {
+  const structuredDataList = [
+    ORGANIZATION_STRUCTURED_DATA,
+    ...(page.extraStructuredData || []),
+  ];
+
+  if (page.breadcrumb) {
+    structuredDataList.push(buildBreadcrumbStructuredData(page.breadcrumb));
+  }
+
+  return {
+    html: renderRoute(path, page.component),
+    head: buildMetaHead({
+      title: page.seo.title,
+      description: page.seo.description,
+      canonical: `${SITE_URL}${page.seo.path}`,
+      structuredDataList,
+    }),
+  };
+}
+
 /*
  * ---------------------------------------------------------
  * PRODUCT SEO
  * ---------------------------------------------------------
  */
 
-function buildProductHead(product) {
-  const category = getCategoryById(product.categoryId);
+function buildProductHead(product, category) {
   const seo = buildProductSeo(product, category);
+
+  // Matches ProductDetail.jsx's own breadcrumb exactly, including its
+  // existing (pre-existing, not introduced here) choice to point the
+  // category crumb at "/products" rather than a dedicated category
+  // page, since no such page exists in this app.
+  const breadcrumb = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    ...(category ? [{ name: category.label, path: "/products" }] : []),
+    { name: product.name, path: `/products/${product.id}` },
+  ];
 
   return buildMetaHead({
     title: seo.title,
     description: seo.description,
     canonical: `${SITE_URL}${seo.path}`,
+    structuredDataList: [
+      ORGANIZATION_STRUCTURED_DATA,
+      buildProductStructuredData(product, category),
+      buildBreadcrumbStructuredData(breadcrumb),
+    ],
   });
 }
 
@@ -162,6 +379,13 @@ function buildBlogHead() {
     description:
       "Notes on acrylic and polycarbonate fabrication — materials, processes, and applications — from Henil Enterprise, an Ahmedabad-based manufacturer and fabricator.",
     canonical: `${SITE_URL}/blog`,
+    structuredDataList: [
+      ORGANIZATION_STRUCTURED_DATA,
+      buildBreadcrumbStructuredData([
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog" },
+      ]),
+    ],
   });
 }
 
@@ -172,123 +396,160 @@ function buildBlogPostHead(post) {
     title: seo.title,
     description: seo.description,
     canonical: `${SITE_URL}${seo.path}`,
-    structuredData: buildBlogPostingStructuredData(post),
+    structuredDataList: [
+      ORGANIZATION_STRUCTURED_DATA,
+      buildBlogPostingStructuredData(post),
+      buildBreadcrumbStructuredData([
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path: `/blog/${post.slug}` },
+      ]),
+    ],
   });
 }
 
 /*
  * ---------------------------------------------------------
- * COMMERCIAL / SEO PAGES
+ * COMMERCIAL / SEO PAGES (city-service landing pages)
  * ---------------------------------------------------------
+ * Each `breadcrumb` mirrors that page's own client-side
+ * buildBreadcrumbStructuredData() call exactly.
  */
 
 const SEO_PAGES = {
   "/acrylic-fabrication-ahmedabad": {
     component: AcrylicFabricationAhmedabad,
-    title: "Acrylic Fabrication Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise provides custom acrylic fabrication in Ahmedabad for industrial components, machine guards, tanks, boxes, covers and precision-fabricated parts.",
+    seo: SEO.acrylicFabricationAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      {
+        name: "Acrylic Fabrication Ahmedabad",
+        path: "/acrylic-fabrication-ahmedabad",
+      },
+    ],
   },
 
   "/custom-acrylic-fabrication-ahmedabad": {
     component: CustomAcrylicFabricationAhmedabad,
-    title: "Custom Acrylic Fabrication Ahmedabad | Henil Enterprise",
-    description:
-      "Custom acrylic fabrication in Ahmedabad for machine guards, tanks, boxes, covers, enclosures and industrial components manufactured to your drawing or sample.",
+    seo: SEO.customAcrylicFabricationAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      {
+        name: "Custom Acrylic Fabrication Ahmedabad",
+        path: "/custom-acrylic-fabrication-ahmedabad",
+      },
+    ],
   },
 
   "/polycarbonate-fabrication-ahmedabad": {
     component: PolycarbonateFabricationAhmedabad,
-    title: "Polycarbonate Fabrication Ahmedabad | Henil Enterprise",
-    description:
-      "Custom polycarbonate fabrication in Ahmedabad for machine guards, protective covers, panels, enclosures and industrial components manufactured to your requirements.",
+    seo: SEO.polycarbonateFabricationAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      {
+        name: "Polycarbonate Fabrication Ahmedabad",
+        path: "/polycarbonate-fabrication-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-machine-guard-manufacturer-ahmedabad": {
     component: AcrylicMachineGuardManufacturerAhmedabad,
-    title:
-      "Acrylic Machine Guard Manufacturer Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise manufactures custom acrylic machine guards in Ahmedabad for industrial machinery, equipment protection and machine visibility applications.",
+    seo: SEO.acrylicMachineGuardManufacturerAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      {
+        name: "Acrylic Machine Guard Manufacturer Ahmedabad",
+        path: "/acrylic-machine-guard-manufacturer-ahmedabad",
+      },
+    ],
   },
 
   "/polycarbonate-machine-guard-manufacturer-ahmedabad": {
     component: PolycarbonateMachineGuardManufacturerAhmedabad,
-    title:
-      "Polycarbonate Machine Guard Manufacturer Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise manufactures custom polycarbonate machine guards in Ahmedabad for industrial machinery, impact protection and operator safety applications.",
+    seo: SEO.polycarbonateMachineGuardManufacturerAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      {
+        name: "Polycarbonate Machine Guard Manufacturer Ahmedabad",
+        path: "/polycarbonate-machine-guard-manufacturer-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-tank-manufacturer-ahmedabad": {
     component: AcrylicTankManufacturerAhmedabad,
-    title: "Acrylic Tank Manufacturer Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise manufactures custom acrylic tanks in Ahmedabad for industrial, laboratory, equipment and process applications, made to your drawing and dimensions.",
+    seo: SEO.acrylicTankManufacturerAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      {
+        name: "Acrylic Tank Manufacturer Ahmedabad",
+        path: "/acrylic-tank-manufacturer-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-box-manufacturer-ahmedabad": {
     component: AcrylicBoxManufacturerAhmedabad,
-    title: "Acrylic Box Manufacturer Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise manufactures custom acrylic boxes in Ahmedabad for industrial, commercial, equipment and display applications according to your dimensions and requirements.",
+    seo: SEO.acrylicBoxManufacturerAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      {
+        name: "Acrylic Box Manufacturer Ahmedabad",
+        path: "/acrylic-box-manufacturer-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-sight-glass-manufacturer-ahmedabad": {
     component: AcrylicSightGlassManufacturerAhmedabad,
-    title:
-      "Acrylic Sight Glass Manufacturer Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise manufactures acrylic sight glasses and inspection components in Ahmedabad for industrial equipment, process systems and machinery applications.",
+    seo: SEO.acrylicSightGlassManufacturerAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      {
+        name: "Acrylic Sight Glass Manufacturer Ahmedabad",
+        path: "/acrylic-sight-glass-manufacturer-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-inspection-window-manufacturer-ahmedabad": {
     component: AcrylicInspectionWindowManufacturerAhmedabad,
-    title:
-      "Acrylic Inspection Window Manufacturer Ahmedabad | Henil Enterprise",
-    description:
-      "Henil Enterprise manufactures custom acrylic inspection windows in Ahmedabad for machinery, industrial equipment and process applications.",
+    seo: SEO.acrylicInspectionWindowManufacturerAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Products", path: "/products" },
+      {
+        name: "Acrylic Inspection Window Manufacturer Ahmedabad",
+        path: "/acrylic-inspection-window-manufacturer-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-cnc-cutting-ahmedabad": {
     component: AcrylicCncCuttingAhmedabad,
-    title: "Acrylic CNC Cutting Ahmedabad | Henil Enterprise",
-    description:
-      "Precision acrylic CNC cutting in Ahmedabad by Henil Enterprise for industrial components, machine parts, panels, guards and custom fabricated products.",
+    seo: SEO.acrylicCncCuttingAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      {
+        name: "Acrylic CNC Cutting Ahmedabad",
+        path: "/acrylic-cnc-cutting-ahmedabad",
+      },
+    ],
   },
 
   "/acrylic-bending-ahmedabad": {
     component: AcrylicBendingAhmedabad,
-    title: "Acrylic Bending Ahmedabad | Henil Enterprise",
-    description:
-      "Custom acrylic bending in Ahmedabad by Henil Enterprise for industrial covers, guards, boxes, enclosures and fabricated acrylic components.",
+    seo: SEO.acrylicBendingAhmedabad,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Acrylic Bending Ahmedabad", path: "/acrylic-bending-ahmedabad" },
+    ],
   },
 };
-
-function buildSeoPageHead(page, path) {
-  return buildMetaHead({
-    title: page.title,
-    description: page.description,
-    canonical: `${SITE_URL}${path}`,
-  });
-}
-
-function renderSeoPage(path, page) {
-  const Component = page.component;
-
-  const html = renderToString(
-    <StaticRouter location={path}>
-      <Routes>
-        <Route path={path} element={<Component />} />
-      </Routes>
-    </StaticRouter>
-  );
-
-  return {
-    html,
-    head: buildSeoPageHead(page, path),
-  };
-}
 
 /*
  * ---------------------------------------------------------
@@ -301,26 +562,44 @@ export async function prerender(data) {
 
   /*
    * -------------------------------------------------------
+   * HOME
+   * -------------------------------------------------------
+   */
+
+  if (path === "/") {
+    return renderHome();
+  }
+
+  /*
+   * -------------------------------------------------------
+   * SIMPLE STATIC PAGES
+   * -------------------------------------------------------
+   */
+
+  if (STATIC_PAGES[path]) {
+    return renderStaticPage(path, STATIC_PAGES[path]);
+  }
+
+  /*
+   * -------------------------------------------------------
    * PRODUCTS INDEX
    * -------------------------------------------------------
    */
 
   if (path === "/products") {
-    const html = renderToString(
-      <StaticRouter location={path}>
-        <Routes>
-          <Route path="/products" element={<Products />} />
-        </Routes>
-      </StaticRouter>
-    );
-
     return {
-      html,
+      html: renderRoute("/products", Products),
       head: buildMetaHead({
-        title: "Acrylic & Polycarbonate Products | Henil Enterprise",
-        description:
-          "Explore custom acrylic and polycarbonate products manufactured by Henil Enterprise in Ahmedabad for industrial, machinery and commercial applications.",
-        canonical: `${SITE_URL}/products`,
+        title: SEO.products.title,
+        description: SEO.products.description,
+        canonical: `${SITE_URL}${SEO.products.path}`,
+        structuredDataList: [
+          ORGANIZATION_STRUCTURED_DATA,
+          buildBreadcrumbStructuredData([
+            { name: "Home", path: "/" },
+            { name: "Products", path: "/products" },
+          ]),
+        ],
       }),
     };
   }
@@ -332,7 +611,20 @@ export async function prerender(data) {
    */
 
   if (SEO_PAGES[path]) {
-    return renderSeoPage(path, SEO_PAGES[path]);
+    const page = SEO_PAGES[path];
+
+    return {
+      html: renderRoute(path, page.component),
+      head: buildMetaHead({
+        title: page.seo.title,
+        description: page.seo.description,
+        canonical: `${SITE_URL}${page.seo.path}`,
+        structuredDataList: [
+          ORGANIZATION_STRUCTURED_DATA,
+          buildBreadcrumbStructuredData(page.breadcrumb),
+        ],
+      }),
+    };
   }
 
   /*
@@ -342,16 +634,8 @@ export async function prerender(data) {
    */
 
   if (path === "/blog") {
-    const html = renderToString(
-      <StaticRouter location={path}>
-        <Routes>
-          <Route path="/blog" element={<Blog />} />
-        </Routes>
-      </StaticRouter>
-    );
-
     return {
-      html,
+      html: renderRoute("/blog", Blog),
       head: buildBlogHead(),
     };
   }
@@ -363,9 +647,7 @@ export async function prerender(data) {
    */
 
   if (path.startsWith("/blog/")) {
-    const slug = path
-      .replace(/^\/blog\//, "")
-      .replace(/\/$/, "");
+    const slug = path.replace(/^\/blog\//, "").replace(/\/$/, "");
 
     const post = BLOG_POSTS.find(
       (item) => item.slug === slug && item.published
@@ -375,19 +657,8 @@ export async function prerender(data) {
       return null;
     }
 
-    const html = renderToString(
-      <StaticRouter location={path}>
-        <Routes>
-          <Route
-            path="/blog/:slug"
-            element={<BlogPost />}
-          />
-        </Routes>
-      </StaticRouter>
-    );
-
     return {
-      html,
+      html: renderRouteAt(path, "/blog/:slug", BlogPost),
       head: buildBlogPostHead(post),
     };
   }
@@ -399,32 +670,19 @@ export async function prerender(data) {
    */
 
   if (path.startsWith("/products/")) {
-    const slug = path
-      .replace(/^\/products\//, "")
-      .replace(/\/$/, "");
+    const slug = path.replace(/^\/products\//, "").replace(/\/$/, "");
 
-    const product = PRODUCTS.find(
-      (item) => item.id === slug
-    );
+    const product = PRODUCTS.find((item) => item.id === slug);
 
     if (!product) {
       return null;
     }
 
-    const html = renderToString(
-      <StaticRouter location={path}>
-        <Routes>
-          <Route
-            path="/products/:slug"
-            element={<ProductDetail />}
-          />
-        </Routes>
-      </StaticRouter>
-    );
+    const category = getCategoryById(product.categoryId);
 
     return {
-      html,
-      head: buildProductHead(product),
+      html: renderRouteAt(path, "/products/:slug", ProductDetail),
+      head: buildProductHead(product, category),
     };
   }
 
@@ -433,7 +691,9 @@ export async function prerender(data) {
    * ALL OTHER ROUTES
    * -------------------------------------------------------
    *
-   * Normal Vite/Vercel application handles these routes.
+   * Normal Vite/Vercel application handles these routes (e.g. /quote's
+   * legacy /get-a-quote redirect, /design-system, and the 404 page —
+   * none of which need or want a static, indexable HTML snapshot).
    */
 
   return null;
