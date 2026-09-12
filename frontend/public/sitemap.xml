@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Main Pages -->
+  <!-- ==================== MAIN PAGES ==================== -->
+
   <url>
     <loc>https://www.henilacrylics.com/</loc>
     <changefreq>weekly</changefreq>
@@ -57,7 +58,7 @@
   </url>
 
 
-  <!-- Commercial / Service Pages -->
+  <!-- ==================== COMMERCIAL / SERVICE PAGES ==================== -->
 
   <url>
     <loc>https://www.henilacrylics.com/acrylic-fabrication-ahmedabad</loc>
@@ -126,7 +127,7 @@
   </url>
 
 
-  <!-- Product Pages -->
+  <!-- ==================== PRODUCT PAGES ==================== -->
 
   <url>
     <loc>https://www.henilacrylics.com/products/acrylic-machine-panel</loc>
@@ -209,7 +210,7 @@
   </url>
 
 
-  <!-- Blog Pages -->
+  <!-- ==================== BLOG PAGES ==================== -->
 
   <url>
     <loc>https://www.henilacrylics.com/blog/acrylic-vs-polycarbonate</loc>
@@ -260,6 +261,9 @@
     <loc>https://www.henilacrylics.com/blog/industrial-applications</loc>
     <priority>0.5</priority>
   </url>
+
+
+  <!-- ==================== LEGAL PAGES ==================== -->
 
   <url>
     <loc>https://www.henilacrylics.com/privacy-policy</loc>
