@@ -7,6 +7,7 @@ import DownloadBrochureButton from "./DownloadBrochureButton.jsx";
 import { NAV_LINKS, CTA_LINK, siteConfig } from "../config/site.config.js";
 import { BROCHURE_URL, BROCHURE_FILENAME } from "../config/brochure.config.js";
 import { useBrochureAvailability } from "../hooks/useBrochureAvailability.js";
+import { trackEvent } from "../utils/analytics.js";
 import "./MainNav.css";
 
 export default function MainNav() {
@@ -74,6 +75,12 @@ export default function MainNav() {
                 rel="noopener noreferrer"
                 className="site-nav__icon-btn"
                 aria-label="Chat with us on WhatsApp"
+                onClick={() =>
+                  trackEvent("whatsapp_click", {
+                    cta_location: "nav_desktop",
+                    cta_label: "Chat with us on WhatsApp",
+                  })
+                }
               >
                 <MessageCircle size={18} strokeWidth={2} />
               </a>
@@ -165,7 +172,13 @@ function MobileMenu({ open, onClose, currentPath }) {
               target="_blank"
               rel="noopener noreferrer"
               className="mobile-menu__whatsapp"
-              onClick={onClose}
+              onClick={() => {
+                trackEvent("whatsapp_click", {
+                  cta_location: "nav_mobile",
+                  cta_label: "Chat on WhatsApp",
+                });
+                onClose();
+              }}
             >
               <MessageCircle size={19} strokeWidth={2} />
               <span>Chat on WhatsApp</span>

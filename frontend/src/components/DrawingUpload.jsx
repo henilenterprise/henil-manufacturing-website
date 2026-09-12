@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { UploadCloud, FileText, X, CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
 import Button from "./ui/Button.jsx";
 import { uploadFiles } from "../services/uploadService.js";
+import { trackEvent } from "../utils/analytics.js";
 import {
   ALLOWED_EXTENSIONS,
   NEVER_ALLOWED_EXTENSIONS,
@@ -88,6 +89,10 @@ export default function DrawingUpload({ onUploaded }) {
     try {
       const result = await uploadFiles(files);
       setStatus("success");
+      // Fired only here, after uploadFiles() has actually resolved — not
+      // on file selection/validation above, which can happen repeatedly
+      // per real upload and shouldn't each count as one.
+      trackEvent("drawing_upload", { file_count: result.files.length });
       onUploaded?.(result.files);
     } catch (err) {
       setStatus("error");

@@ -16,6 +16,7 @@ import { QUOTE_STEPS, emptyQuoteFormState } from "../data/quoteForm.data.js";
 import { submitInquiry } from "../services/inquiryService.js";
 import { useToast } from "../components/ui/index.js";
 import { useSeo } from "../hooks/useSeo.js";
+import { trackEvent } from "../utils/analytics.js";
 import { SEO } from "../config/seo.config.js";
 import "./Quote.css";
 
@@ -102,6 +103,14 @@ export default function Quote() {
       const result = await submitInquiry(formState);
       setReferenceNumber(result.referenceNumber);
       setStatus("success");
+      // Fired only after submitInquiry() resolves, i.e. only once the
+      // backend has actually accepted and stored the inquiry — never on
+      // button click, and never if the request throws below.
+      trackEvent("rfq_submission_success", {
+        reference_number: result.referenceNumber,
+        product_type: formState.requirement?.product || "",
+        material: formState.requirement?.material || "",
+      });
     } catch (err) {
       setStatus("error");
       setErrorMessage(err.message || "Something went wrong. Please try again.");

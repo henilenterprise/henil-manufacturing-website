@@ -10,6 +10,7 @@ import { siteConfig } from "../config/site.config.js";
 import { localBusiness } from "../config/localBusiness.config.js";
 import { useSeo } from "../hooks/useSeo.js";
 import { useJsonLd } from "../hooks/useJsonLd.js";
+import { trackEvent } from "../utils/analytics.js";
 import { SEO } from "../config/seo.config.js";
 import { buildBreadcrumbStructuredData, buildLocalBusinessStructuredData } from "../utils/structuredData.js";
 import "./Contact.css";
@@ -58,6 +59,10 @@ export default function Contact() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!mailtoHref) return;
+    trackEvent("email_click", {
+      cta_location: "contact_form",
+      cta_label: "Send Message",
+    });
     window.location.href = mailtoHref;
   }
 
@@ -89,7 +94,16 @@ export default function Contact() {
                 {siteConfig.phone && (
                   <li>
                     <Phone size={17} strokeWidth={2} />
-                    <a href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, "")}`} itemProp="telephone">
+                    <a
+                      href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, "")}`}
+                      itemProp="telephone"
+                      onClick={() =>
+                        trackEvent("phone_click", {
+                          cta_location: "contact_page",
+                          cta_label: siteConfig.phone,
+                        })
+                      }
+                    >
                       {siteConfig.phone}
                     </a>
                   </li>
@@ -97,7 +111,16 @@ export default function Contact() {
                 {siteConfig.email && (
                   <li>
                     <Mail size={17} strokeWidth={2} />
-                    <a href={`mailto:${siteConfig.email}`} itemProp="email">
+                    <a
+                      href={`mailto:${siteConfig.email}`}
+                      itemProp="email"
+                      onClick={() =>
+                        trackEvent("email_click", {
+                          cta_location: "contact_page",
+                          cta_label: siteConfig.email,
+                        })
+                      }
+                    >
                       {siteConfig.email}
                     </a>
                   </li>
@@ -105,7 +128,17 @@ export default function Contact() {
                 {siteConfig.whatsapp.href && (
                   <li>
                     <MessageCircle size={17} strokeWidth={2} />
-                    <a href={siteConfig.whatsapp.href} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={siteConfig.whatsapp.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackEvent("whatsapp_click", {
+                          cta_location: "contact_page",
+                          cta_label: "WhatsApp Us",
+                        })
+                      }
+                    >
                       WhatsApp Us
                     </a>
                   </li>

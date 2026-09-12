@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import { siteConfig } from "../config/site.config.js";
 import { getProductById } from "../data/products.data.js";
+import { trackEvent } from "../utils/analytics.js";
 import "./FloatingWhatsAppButton.css";
 
 const PRODUCT_ROUTE = /^\/products\/([^/]+)$/;
@@ -54,6 +55,12 @@ export default function FloatingWhatsAppButton() {
         rel="noopener noreferrer"
         className="floating-whatsapp__button"
         aria-label="Chat with us on WhatsApp"
+        onClick={() =>
+          trackEvent("whatsapp_click", {
+            cta_location: "floating_button",
+            cta_label: "Chat with us on WhatsApp",
+          })
+        }
       >
         <MessageCircle size={26} strokeWidth={2} fill="currentColor" />
         <span className="floating-whatsapp__pulse" aria-hidden="true" />

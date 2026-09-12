@@ -2,6 +2,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import Button from "../components/ui/Button.jsx";
 import HeroVisual from "./HeroVisual.jsx";
 import { siteConfig } from "../config/site.config.js";
+import { trackEvent } from "../utils/analytics.js";
 import "./HeroSection.css";
 
 export default function HeroSection() {
@@ -35,6 +36,12 @@ export default function HeroSection() {
                 size="lg"
                 icon={MessageCircle}
                 iconPosition="left"
+                onClick={() =>
+                  trackEvent("whatsapp_click", {
+                    cta_location: "hero_section",
+                    cta_label: "WhatsApp Us",
+                  })
+                }
               >
                 WhatsApp Us
               </Button>

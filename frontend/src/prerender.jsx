@@ -14,6 +14,9 @@ import Contact from "./pages/Contact.jsx";
 import Faq from "./pages/Faq.jsx";
 import Quote from "./pages/Quote.jsx";
 import Brochure from "./pages/Brochure.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import Terms from "./pages/Terms.jsx";
+import CookiePolicy from "./pages/CookiePolicy.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import Products from "./pages/Products.jsx";
 import Blog from "./pages/Blog.jsx";
@@ -310,6 +313,30 @@ const STATIC_PAGES = {
   "/brochure": {
     component: Brochure,
     seo: SEO.brochure,
+  },
+  "/privacy-policy": {
+    component: PrivacyPolicy,
+    seo: SEO.privacyPolicy,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Privacy Policy", path: "/privacy-policy" },
+    ],
+  },
+  "/terms": {
+    component: Terms,
+    seo: SEO.terms,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Terms of Use", path: "/terms" },
+    ],
+  },
+  "/cookie-policy": {
+    component: CookiePolicy,
+    seo: SEO.cookiePolicy,
+    breadcrumb: [
+      { name: "Home", path: "/" },
+      { name: "Cookie Policy", path: "/cookie-policy" },
+    ],
   },
 };
 

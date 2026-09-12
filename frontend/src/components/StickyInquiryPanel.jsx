@@ -4,6 +4,7 @@ import Badge from "./ui/Badge.jsx";
 import Button from "./ui/Button.jsx";
 import { getCategoryById } from "../data/categories.data.js";
 import { siteConfig } from "../config/site.config.js";
+import { trackEvent } from "../utils/analytics.js";
 import "./StickyInquiryPanel.css";
 
 /**
@@ -44,6 +45,12 @@ export default function StickyInquiryPanel({ product, quoteHref }) {
           icon={MessageCircle}
           iconPosition="left"
           className="sticky-inquiry__whatsapp"
+          onClick={() =>
+            trackEvent("whatsapp_click", {
+              cta_location: "sticky_panel",
+              cta_label: "Ask on WhatsApp",
+            })
+          }
         >
           Ask on WhatsApp
         </Button>

@@ -261,4 +261,22 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://www.henilacrylics.com/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://www.henilacrylics.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://www.henilacrylics.com/cookie-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
 </urlset>

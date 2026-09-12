@@ -63,6 +63,9 @@ const STATIC_ROUTES = [
   "/quote",
   "/brochure",
   "/products",
+  "/privacy-policy",
+  "/terms",
+  "/cookie-policy",
 ];
 
 export default defineConfig({

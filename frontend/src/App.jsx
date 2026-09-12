@@ -62,6 +62,9 @@ const Contact = lazy(() => import("./pages/Contact.jsx"));
 const Faq = lazy(() => import("./pages/Faq.jsx"));
 const Quote = lazy(() => import("./pages/Quote.jsx"));
 const Brochure = lazy(() => import("./pages/Brochure.jsx"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
+const Terms = lazy(() => import("./pages/Terms.jsx"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy.jsx"));
 // Internal tooling, never linked from anywhere a real visitor would
 // find it (see frontend/public/robots.txt, which explicitly excludes
 // it) — the clearest possible case for not shipping it in anyone's
@@ -155,6 +158,9 @@ export default function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/brochure" element={<Brochure />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/get-a-quote" element={<LegacyQuoteRedirect />} />
             <Route path="/design-system" element={<DesignSystem />} />
             <Route path="*" element={<NotFound />} />
